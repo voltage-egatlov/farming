@@ -459,8 +459,83 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5909628571220776237, guid: d5c51785b7b0e13408dbc2363da46e4c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4803519722179050797}
+    - targetCorrespondingSourceObject: {fileID: 5909628571220776237, guid: d5c51785b7b0e13408dbc2363da46e4c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4803519722179050796}
+    - targetCorrespondingSourceObject: {fileID: 5909628571220776237, guid: d5c51785b7b0e13408dbc2363da46e4c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4803519722179050798}
   m_SourcePrefab: {fileID: 100100000, guid: d5c51785b7b0e13408dbc2363da46e4c, type: 3}
+--- !u!1 &4803519722179050795 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5909628571220776237, guid: d5c51785b7b0e13408dbc2363da46e4c, type: 3}
+  m_PrefabInstance: {fileID: 4803519722179050794}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &4803519722179050796
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4803519722179050795}
+  serializedVersion: 4
+  m_Mass: 0.5
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &4803519722179050797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4803519722179050795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2989dae2e4dbcbf46baa0cce145a388f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeedText: {fileID: 0}
+  tractorRigidbody: {fileID: 0}
+  forwardSpeed: 5
+  reverseSpeed: 2
+  forwardTurnSpeed: 1
+  reverseTurnSpeed: 0.4
+  horizontalInput: 0
+  verticalInput: 0
+--- !u!114 &4803519722179050798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4803519722179050795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8127c70db1ed204a95e6d03360b1714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cropPrefab: {fileID: 1856118134373080824, guid: 5f6564b582e40974e84efcc7c4918d95, type: 3}
+  plantOffset: 0
 --- !u!1001 &5361518811174298663
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -524,8 +599,60 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2210553628449481813, guid: 232a57448d8d86941b62f74825786661, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5361518811174298665}
+    - targetCorrespondingSourceObject: {fileID: 2210553628449481813, guid: 232a57448d8d86941b62f74825786661, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5361518811174298666}
   m_SourcePrefab: {fileID: 100100000, guid: 232a57448d8d86941b62f74825786661, type: 3}
+--- !u!1 &5361518811174298664 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2210553628449481813, guid: 232a57448d8d86941b62f74825786661, type: 3}
+  m_PrefabInstance: {fileID: 5361518811174298663}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &5361518811174298665
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5361518811174298664}
+  serializedVersion: 4
+  m_Mass: 0.5
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &5361518811174298666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5361518811174298664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8127c70db1ed204a95e6d03360b1714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cropPrefab: {fileID: 1856118134373080824, guid: 5f6564b582e40974e84efcc7c4918d95, type: 3}
+  plantOffset: 0
 --- !u!1001 &5621053733163279496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -585,8 +712,83 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3757220683297086555, guid: 5f16346eb0171344db3fd16e3e07ccf1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5621053733163279499}
+    - targetCorrespondingSourceObject: {fileID: 3757220683297086555, guid: 5f16346eb0171344db3fd16e3e07ccf1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5621053733163279498}
+    - targetCorrespondingSourceObject: {fileID: 3757220683297086555, guid: 5f16346eb0171344db3fd16e3e07ccf1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5621053733163279500}
   m_SourcePrefab: {fileID: 100100000, guid: 5f16346eb0171344db3fd16e3e07ccf1, type: 3}
+--- !u!1 &5621053733163279497 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3757220683297086555, guid: 5f16346eb0171344db3fd16e3e07ccf1, type: 3}
+  m_PrefabInstance: {fileID: 5621053733163279496}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &5621053733163279498
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5621053733163279497}
+  serializedVersion: 4
+  m_Mass: 0.5
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &5621053733163279499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5621053733163279497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2989dae2e4dbcbf46baa0cce145a388f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeedText: {fileID: 0}
+  tractorRigidbody: {fileID: 0}
+  forwardSpeed: 5
+  reverseSpeed: 2
+  forwardTurnSpeed: 1
+  reverseTurnSpeed: 0.4
+  horizontalInput: 0
+  verticalInput: 0
+--- !u!114 &5621053733163279500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5621053733163279497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8127c70db1ed204a95e6d03360b1714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cropPrefab: {fileID: 1856118134373080824, guid: 5f6564b582e40974e84efcc7c4918d95, type: 3}
+  plantOffset: 0
 --- !u!1001 &7981005218881150742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -659,6 +861,10 @@ PrefabInstance:
     - target: {fileID: 5418904228950960676, guid: a04fdc7cb2c779c44a5f01933fb5e7fd, type: 3}
       propertyPath: m_Name
       value: TractorModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418904228950960676, guid: a04fdc7cb2c779c44a5f01933fb5e7fd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6454791561315265391, guid: a04fdc7cb2c779c44a5f01933fb5e7fd, type: 3}
       propertyPath: m_RootOrder
