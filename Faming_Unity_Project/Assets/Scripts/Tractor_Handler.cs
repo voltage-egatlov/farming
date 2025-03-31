@@ -25,6 +25,8 @@ public class Tractor_Handler : MonoBehaviour
 
     public float rotateModifier = 10f; // Modifier for wheel rotation speed based on tractor's velocity
 
+    public GameObject Crop;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,5 +86,35 @@ public class Tractor_Handler : MonoBehaviour
         FrontRightWheel.transform.Rotate(0, tractorRigidbody.velocity.x * Time.deltaTime * rotateModifier, 0);
         BackLeftWheel.transform.Rotate(0, tractorRigidbody.velocity.x * Time.deltaTime * rotateModifier, 0);
         BackRightWheel.transform.Rotate(0, tractorRigidbody.velocity.x * Time.deltaTime * rotateModifier, 0);
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("PlanterBox"))
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                PlantingBoxScript plantingBox = other.GetComponent<PlantingBoxScript>();
+                if (plantingBox != null && plantingBox.currentState == PlantingBoxScript.BoxState.Empty)
+                {
+                    float plantingWidth = other.transform.localScale.x; // Get the width of the planting box
+                    float plantingLength = other.transform.localScale.z; // Get the length of the planting box
+
+                    float numCropsWidth = Mathf.Round(plantingWidth*25); // Calculate the number of crops that can fit in the width of the planting box
+                    float numCropsLength = Mathf.Round(plantingLength*25); // Calculate the number of crops that can fit in the length of the planting box
+
+                    for (int i = 0; i < numCropsWidth; i++) // Loop through the width of the planting box
+                    {
+                        for (int j = 0; j < numCropsLength; j++) // Loop through the length of the planting box
+                        {
+                            GameObject newCrop = Instantiate(Crop, new Vector3(0, 0, 0), Quaternion.identity, other.transform);
+                            newCrop.transform.localScale = new Vector3(.75f, 7.5f, .75f); // Set the scale of the crop object
+                            newCrop.transform.localPosition = new Vector3(-.5f + (i + .5f) * (1 / numCropsWidth), 0, -.5f + (j + .5f) * (1 / numCropsLength)); // Position the crop within the planting box
+                        }
+                    }
+                    plantingBox.currentState = PlantingBoxScript.BoxState.Planted; // Change the state of the planting box to Planted
+                }
+            }   
+        }
     }
 }
