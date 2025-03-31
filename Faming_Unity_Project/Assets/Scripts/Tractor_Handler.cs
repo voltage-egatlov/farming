@@ -17,6 +17,14 @@ public class Tractor_Handler : MonoBehaviour
     public float horizontalInput; // Variable to store horizontal input for steering
     public float verticalInput; // Variable to store vertical input for acceleration/deceleration
 
+
+    public GameObject FrontRightWheel;
+    public GameObject FrontLeftWheel;
+    public GameObject BackRightWheel;
+    public GameObject BackLeftWheel;
+
+    public float rotateModifier = 10f; // Modifier for wheel rotation speed based on tractor's velocity
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,5 +78,11 @@ public class Tractor_Handler : MonoBehaviour
         }
         
         SpeedText.text = Mathf.Round(tractorRigidbody.velocity.magnitude*10).ToString(); // Update the UI text to show the current speed of the tractor
+
+        // Update wheel rotation based on the tractor's velocity
+        FrontLeftWheel.transform.Rotate(0, tractorRigidbody.velocity.x * Time.deltaTime * rotateModifier, 0);
+        FrontRightWheel.transform.Rotate(0, tractorRigidbody.velocity.x * Time.deltaTime * rotateModifier, 0);
+        BackLeftWheel.transform.Rotate(0, tractorRigidbody.velocity.x * Time.deltaTime * rotateModifier, 0);
+        BackRightWheel.transform.Rotate(0, tractorRigidbody.velocity.x * Time.deltaTime * rotateModifier, 0);
     }
 }
