@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.83647794, b: 0.83647794, a: 1}
+  m_Color: {r: 0.5254902, g: 0.6901961, b: 0.50980395, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -785,6 +785,34 @@ PrefabInstance:
     - target: {fileID: 4521591829608091851, guid: 555f54042cf87e14390959921f12e3f1, type: 3}
       propertyPath: m_Name
       value: menu_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182434931530247544, guid: 555f54042cf87e14390959921f12e3f1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182434931530247544, guid: 555f54042cf87e14390959921f12e3f1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182434931530247544, guid: 555f54042cf87e14390959921f12e3f1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5298630558832853128, guid: 3b9e16af5bc9fb34ea930be557d16dd4, type: 3}
+    - target: {fileID: 5182434931530247544, guid: 555f54042cf87e14390959921f12e3f1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182434931530247544, guid: 555f54042cf87e14390959921f12e3f1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182434931530247544, guid: 555f54042cf87e14390959921f12e3f1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182434931530247544, guid: 555f54042cf87e14390959921f12e3f1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6703552508469017998, guid: 555f54042cf87e14390959921f12e3f1, type: 3}
       propertyPath: m_text

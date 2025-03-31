@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,7 +11,6 @@ public class GameManager : MonoBehaviour
 
     private Dictionary<string, int> seedInventory = new Dictionary<string, int>();
 
-    
     void Awake()
     {
         if(Instance == null)
@@ -58,5 +58,31 @@ public class GameManager : MonoBehaviour
         if (seedInventory.ContainsKey(seedType))
             return seedInventory[seedType];
         return 0;
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("Level1");
+    }
+    
+    // Return to MainMenu
+    public void RestartGame() 
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Credits()
+    {
+        SceneManager.LoadScene("CreditsScene");
+    }
+
+    public void QuitGame() 
+    {
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+        #endif
     }
 }
