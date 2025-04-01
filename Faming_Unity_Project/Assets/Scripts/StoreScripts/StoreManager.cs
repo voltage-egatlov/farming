@@ -184,11 +184,13 @@ public class StoreManager : MonoBehaviour
     {
         storeContainer.SetActive(false);
 
-        if (purchaseButtonsPanel != null)
-            purchaseButtonsPanel.SetActive(false);
+        // Optional: hide close button when closing store
+        if (closeButton != null)
+            closeButton.SetActive(false);
 
         SwitchToMainCam();
     }
+
 
     public void ShowTractorPanel()
     {
@@ -213,21 +215,19 @@ public class StoreManager : MonoBehaviour
 
     public void ActivateLandView()
     {
-        Debug.Log("Switching to LandCam, hiding MapPanel background, showing purchase buttons");
+        Debug.Log("Switching to LandCam, hiding entire MapPanel, showing purchase buttons");
 
+        // Disable the entire MapPanel
         if (mapPanel != null)
         {
-            // Disable map panel background
-            Image background = mapPanel.GetComponent<Image>();
-            if (background != null)
-                background.enabled = false;
+            mapPanel.SetActive(false);
+            Debug.Log("MapPanel has been fully deactivated.");
+        }
 
-            // Hide all children EXCEPT the close button
-            foreach (Transform child in mapPanel.transform)
-            {
-                if (child.gameObject != closeButton)
-                    child.gameObject.SetActive(false);
-            }
+        if (closeButton != null)
+        {
+            closeButton.SetActive(true);
+            Debug.Log("Close button activated: " + closeButton.name);
         }
 
         // Show land purchase buttons
@@ -237,6 +237,7 @@ public class StoreManager : MonoBehaviour
         UpdateLandButtons();
         SwitchToLandCam();
     }
+
 
     private void UpdateLandButtons()
     {
@@ -321,4 +322,21 @@ public class StoreManager : MonoBehaviour
             UpdateLandButtons();
         }
     }
+
+    public void CloseLandView()
+{
+    Debug.Log("Closing land view and returning to main cam.");
+
+    // Hide the land purchase buttons
+    if (purchaseButtonsPanel != null)
+        purchaseButtonsPanel.SetActive(false);
+
+    // Hide the close button itself
+    if (closeButton != null)
+        closeButton.SetActive(false);
+
+    // Switch back to the main camera
+    SwitchToMainCam();
+}
+
 }
