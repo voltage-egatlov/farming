@@ -3,7 +3,7 @@ using UnityEngine;
 public class LandPlot : MonoBehaviour
 {
     public bool isPurchased = false;
-    public int price = 1000;
+    public int price = 100;
 
     private Collider col;
 

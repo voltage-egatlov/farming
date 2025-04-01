@@ -68,7 +68,7 @@
 
 //     public void ActivateLandView()
 //     {
-//         Debug.Log("🗺️ Switching to LandCam and showing land buttons");
+//         Debug.Log("Switching to LandCam and showing land buttons");
 
 //         if (futurePanel != null)
 //             futurePanel.SetActive(false);
@@ -77,7 +77,7 @@
 //             closeButton.SetActive(true);
 
 //         if (purchaseButtonsPanel != null)
-//             purchaseButtonsPanel.SetActive(true); // ✅ SHOW buttons!
+//             purchaseButtonsPanel.SetActive(true); 
 
 //         SwitchToLandCam();
 //     }
@@ -97,11 +97,11 @@
 //             AudioListener landAudio = landCam.GetComponent<AudioListener>();
 //             if (landAudio) landAudio.enabled = true;
 
-//             Debug.Log("✅ Switched to LandCam!");
+//             Debug.Log("Switched to LandCam!");
 //         }
 //         else
 //         {
-//             Debug.LogWarning("🚫 One or both cameras are not assigned in StoreManager.");
+//             Debug.LogWarning("One or both cameras are not assigned in StoreManager.");
 //         }
 //     }
 
@@ -118,11 +118,11 @@
 //             AudioListener landAudio = landCam.GetComponent<AudioListener>();
 //             if (landAudio) landAudio.enabled = false;
 
-//             Debug.Log("✅ Switched to MainCam!");
+//             Debug.Log("Switched to MainCam!");
 //         }
 //         else
 //         {
-//             Debug.LogWarning("🚫 One or both cameras are not assigned in StoreManager.");
+//             Debug.LogWarning("One or both cameras are not assigned in StoreManager.");
 //         }
 //     }
 
@@ -140,12 +140,11 @@
 // }
 
 
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; // required for button access
-using TMPro; // required if you're using TextMeshProUGUI
+using UnityEngine.UI;
+using TMPro;
 
 public class StoreManager : MonoBehaviour
 {
@@ -156,10 +155,11 @@ public class StoreManager : MonoBehaviour
     public GameObject seedsPanel;
     public GameObject futurePanel;
     public GameObject closeButton;
+    public GameObject mapPanel;
     public GameObject purchaseButtonsPanel;
 
-    public Button[] landPurchaseButtons;  // drag buttons here
-    public LandPlot[] landPlots;          // drag land plots here
+    public Button[] landPurchaseButtons;
+    public LandPlot[] landPlots;
     public LandPlot selectedPlot;
 
     public Camera mainCam;
@@ -175,7 +175,7 @@ public class StoreManager : MonoBehaviour
 
     public void OpenStore()
     {
-        Debug.Log("🛒 Opening store...");
+        Debug.Log("Opening store...");
         storeContainer.SetActive(true);
         ShowTractorPanel();
     }
@@ -185,7 +185,7 @@ public class StoreManager : MonoBehaviour
         storeContainer.SetActive(false);
 
         if (purchaseButtonsPanel != null)
-            purchaseButtonsPanel.SetActive(false); // Hide land purchase UI
+            purchaseButtonsPanel.SetActive(false);
 
         SwitchToMainCam();
     }
@@ -213,19 +213,28 @@ public class StoreManager : MonoBehaviour
 
     public void ActivateLandView()
     {
-        Debug.Log("🗺️ Switching to LandCam and showing land buttons");
+        Debug.Log("Switching to LandCam, hiding MapPanel background, showing purchase buttons");
 
-        if (futurePanel != null)
-            futurePanel.SetActive(false);
+        if (mapPanel != null)
+        {
+            // Disable map panel background
+            Image background = mapPanel.GetComponent<Image>();
+            if (background != null)
+                background.enabled = false;
 
-        if (closeButton != null)
-            closeButton.SetActive(true);
+            // Hide all children EXCEPT the close button
+            foreach (Transform child in mapPanel.transform)
+            {
+                if (child.gameObject != closeButton)
+                    child.gameObject.SetActive(false);
+            }
+        }
 
+        // Show land purchase buttons
         if (purchaseButtonsPanel != null)
             purchaseButtonsPanel.SetActive(true);
 
         UpdateLandButtons();
-
         SwitchToLandCam();
     }
 
@@ -239,11 +248,8 @@ public class StoreManager : MonoBehaviour
 
             TextMeshProUGUI text = button.GetComponentInChildren<TextMeshProUGUI>();
             if (text != null)
-            {
                 text.text = plot.isPurchased ? "Purchased" : $"Purchase ${plot.price}";
-            }
 
-            // Reset and assign listener
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() => PurchaseLand(index));
 
@@ -251,16 +257,14 @@ public class StoreManager : MonoBehaviour
         }
     }
 
-
     private void PurchaseLand(int index)
     {
         if (index >= 0 && index < landPlots.Length)
         {
             landPlots[index].Purchase();
-            UpdateLandButtons(); // Refresh text & interactability
+            UpdateLandButtons(); // Refresh the UI
         }
     }
-
 
     private void SwitchToLandCam()
     {
@@ -275,11 +279,11 @@ public class StoreManager : MonoBehaviour
             AudioListener landAudio = landCam.GetComponent<AudioListener>();
             if (landAudio) landAudio.enabled = true;
 
-            Debug.Log("✅ Switched to LandCam!");
+            Debug.Log("Switched to LandCam!");
         }
         else
         {
-            Debug.LogWarning("🚫 Cameras not assigned!");
+            Debug.LogWarning("Cameras not assigned!");
         }
     }
 
@@ -296,11 +300,11 @@ public class StoreManager : MonoBehaviour
             AudioListener landAudio = landCam.GetComponent<AudioListener>();
             if (landAudio) landAudio.enabled = false;
 
-            Debug.Log("✅ Switched to MainCam!");
+            Debug.Log("Switched to MainCam!");
         }
         else
         {
-            Debug.LogWarning("🚫 Cameras not assigned!");
+            Debug.LogWarning("Cameras not assigned!");
         }
     }
 
