@@ -165,7 +165,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &30119813
 GameObject:
@@ -709,7 +709,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &97366637
 MonoBehaviour:
@@ -724,7 +724,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPurchased: 0
-  price: 1000
+  price: 100
+  boundaryObject: {fileID: 97366632}
 --- !u!1001 &97819708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1109,7 +1110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &146511774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1156,7 +1157,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1717835677}
         m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
-        m_MethodName: CloseStore
+        m_MethodName: CloseLandView
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1217,12 +1218,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 662625448}
-  m_Father: {fileID: 1620806819}
-  m_RootOrder: -1
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 248, y: 144}
+  m_AnchoredPosition: {x: 613, y: 372}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &167207813
@@ -1636,7 +1637,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &255436989
 GameObject:
@@ -3593,7 +3594,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &876173061
 MonoBehaviour:
@@ -3608,7 +3609,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPurchased: 0
-  price: 1000
+  price: 100
+  boundaryObject: {fileID: 876173056}
 --- !u!1001 &938508294
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4306,7 +4308,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8144311375270592867, guid: fd438e6292426734f9f0a6420d8f6e58, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8144311375270592867, guid: fd438e6292426734f9f0a6420d8f6e58, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5691,7 +5693,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1575631637
 MonoBehaviour:
@@ -5706,7 +5708,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPurchased: 0
-  price: 1000
+  price: 100
+  boundaryObject: {fileID: 1575631632}
 --- !u!1 &1576767870
 GameObject:
   m_ObjectHideFlags: 0
@@ -5771,7 +5774,6 @@ RectTransform:
   m_Children:
   - {fileID: 623168117}
   - {fileID: 2092943229}
-  - {fileID: 146511777}
   - {fileID: 137135502}
   m_Father: {fileID: 1073788130}
   m_RootOrder: -1
@@ -6864,7 +6866,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &1806617465
 PrefabInstance:
@@ -7856,7 +7858,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1988175126
 MonoBehaviour:
@@ -7871,7 +7873,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPurchased: 0
-  price: 1000
+  price: 100
+  boundaryObject: {fileID: 1988175121}
 --- !u!1001 &2035447408
 PrefabInstance:
   m_ObjectHideFlags: 0
