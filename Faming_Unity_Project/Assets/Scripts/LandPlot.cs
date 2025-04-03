@@ -5,13 +5,10 @@ public class LandPlot : MonoBehaviour
     public bool isPurchased = false;
     public int price = 100;
 
-    public GameObject boundaryObject; // <-- NEW: drag the boundary here in Inspector
+    public GameObject boundaryObject; // Assign the visual + collider object here
 
-    private Collider col;
-
-    void Awake()
+    private void Awake()
     {
-        col = GetComponent<Collider>();
         UpdateAccess();
     }
 
@@ -21,10 +18,6 @@ public class LandPlot : MonoBehaviour
         {
             isPurchased = true;
             UpdateAccess();
-
-            // NEW: Hide the boundary
-            if (boundaryObject != null)
-                boundaryObject.SetActive(false);
 
             Debug.Log(gameObject.name + " has been purchased!");
         }
@@ -36,15 +29,14 @@ public class LandPlot : MonoBehaviour
 
     private void UpdateAccess()
     {
-        if (col != null)
-        {
-            col.isTrigger = isPurchased;
-        }
+        // Hide the boundary when land is purchased
+        if (boundaryObject != null)
+            boundaryObject.SetActive(!isPurchased); // ON if not purchased, OFF if purchased
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (!isPurchased && other.CompareTag("Tractor"))
+        if (!isPurchased && other.collider.CompareTag("Tractor"))
         {
             Debug.Log("This land is not purchased yet!");
         }
