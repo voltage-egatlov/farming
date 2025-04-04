@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int bankBalance = 1000;  // Starting funds
 
     private Dictionary<string, int> seedInventory = new Dictionary<string, int>();
+    private Dictionary<string, int> cropInventory = new Dictionary<string, int>();
 
     void Awake()
     {
@@ -57,6 +58,24 @@ public class GameManager : MonoBehaviour
     {
         if (seedInventory.ContainsKey(seedType))
             return seedInventory[seedType];
+        return 0;
+    }
+
+    public void AddCrop(string cropType, int quantity = 1)
+    {
+        if (cropInventory.ContainsKey(cropType))
+            cropInventory[cropType] += quantity;
+        else
+            cropInventory[cropType] = quantity;
+
+        Debug.Log("Added " + quantity + " " + cropType + " crop(s). Total: " + cropInventory[cropType]);
+    }
+
+    // Method to retrieve the count for a crop
+    public int GetCropCount(string cropType)
+    {
+        if (cropInventory.ContainsKey(cropType))
+            return cropInventory[cropType];
         return 0;
     }
 

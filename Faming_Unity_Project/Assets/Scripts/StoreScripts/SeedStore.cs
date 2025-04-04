@@ -4,7 +4,6 @@ public class SeedStore : MonoBehaviour
 {
     public void BuySeed(string seedType)
     {
-        // Step 1: Determine the cost for the seed type.
         int cost = GetSeedCost(seedType);
 
         // Step 2: Check the player's bank balance and deduct funds.
@@ -28,14 +27,19 @@ public class SeedStore : MonoBehaviour
     {
         switch (seedType)
         {
-            case "Wheat":
-                return 100;
+            case "Tomato":
+                return 120;
+            case "Carrot":
+                return 110;
             case "Corn":
                 return 150;
-            case "Soy":
-                return 200;
+            case "Cabbage":
+                return 130;
+            case "Wheat":
+                return 100;
             default:
-                return 100; // Default cost --should never happen tho
+                return 100; 
         }
     }
+
 }
