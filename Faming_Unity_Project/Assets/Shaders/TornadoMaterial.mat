@@ -42,8 +42,8 @@ Material:
     - _NoiseScale: 20
     - _TwirlAmount: 20
     m_Colors:
-    - _Color: {r: 0, g: 0.73725456, b: 0.7372549, a: 0}
-    - _NoiseSpeed: {r: 0, g: -1, b: 0, a: 0}
+    - _Color: {r: 1.4459567, g: 4.906425, b: 7.4642644, a: 0.6313726}
+    - _NoiseSpeed: {r: 0, g: 2, b: 0, a: 0}
     - _TwirlCenter: {r: 0, g: 0.5, b: 0, a: 0}
     - _TwirlSpeed: {r: 0.1, g: 0.1, b: 0, a: 0}
   m_BuildTextureStacks: []
