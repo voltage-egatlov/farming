@@ -6,6 +6,7 @@ using TMPro;
 public class Tractor_Handler : MonoBehaviour
 {
     public TextMeshProUGUI SpeedText; // Reference to the UI TextMeshPro component for displaying forward/reverse gear
+    public TextMeshProUGUI EquippedText;
 
     public Rigidbody tractorRigidbody; // Reference to the Rigidbody component of the tractor
     public float forwardSpeed = 5f; // Maximum speed of the tractor
@@ -25,7 +26,17 @@ public class Tractor_Handler : MonoBehaviour
 
     public float rotateModifier = 10f; // Modifier for wheel rotation speed based on tractor's velocity
 
-    public GameObject Crop;
+    public GameObject Seed;
+
+    public enum currentEquippedItem
+    {
+        None,
+        Seed,
+        Fertilizer,
+        Water
+    } // Enum to represent the currently equipped item
+
+    [SerializeField] public currentEquippedItem currentItem = currentEquippedItem.None; // Current equipped item, default is None
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +48,8 @@ public class Tractor_Handler : MonoBehaviour
         }
 
         SpeedText = GameObject.Find("SpeedText").GetComponent<TextMeshProUGUI>(); // Find the UI TextMeshPro component in the scene
+        EquippedText = GameObject.Find("EquippedText").GetComponent<TextMeshProUGUI>(); // Find the UI TextMeshPro component in the scene
+
         // Initialize the UI text to show the initial gear
         SpeedText.text ="0"; // Default to forward gear
 
@@ -80,12 +93,30 @@ public class Tractor_Handler : MonoBehaviour
         }
         
         SpeedText.text = Mathf.Round(tractorRigidbody.velocity.magnitude*10).ToString(); // Update the UI text to show the current speed of the tractor
+        EquippedText.text = "Equipped: " + currentItem.ToString(); // Update the UI text to show the currently equipped item
 
         // Update wheel rotation based on the tractor's velocity
         FrontLeftWheel.transform.Rotate(0, tractorRigidbody.velocity.x * Time.deltaTime * rotateModifier, 0);
         FrontRightWheel.transform.Rotate(0, tractorRigidbody.velocity.x * Time.deltaTime * rotateModifier, 0);
         BackLeftWheel.transform.Rotate(0, tractorRigidbody.velocity.x * Time.deltaTime * rotateModifier, 0);
         BackRightWheel.transform.Rotate(0, tractorRigidbody.velocity.x * Time.deltaTime * rotateModifier, 0);
+    }
+
+    void OnTriggerEnter (Collider other)
+    {
+        // Check if the object that entered the trigger is the planting box
+        if (other.CompareTag("SeedStorage"))
+        {
+            currentItem = currentEquippedItem.Seed; // Set the current equipped item to Seed
+        }
+        else if (other.CompareTag("FertilizerStorage"))
+        {
+            currentItem = currentEquippedItem.Fertilizer; // Set the current equipped item to Fertilizer
+        }
+        else if (other.CompareTag("WaterTower"))
+        {
+            currentItem = currentEquippedItem.Water; // Set the current equipped item to Water
+        }
     }
 
     void OnTriggerStay(Collider other)
@@ -95,7 +126,7 @@ public class Tractor_Handler : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 PlantingBoxScript plantingBox = other.GetComponent<PlantingBoxScript>();
-                if (plantingBox != null && plantingBox.currentState == PlantingBoxScript.BoxState.Empty)
+                if (plantingBox != null && plantingBox.currentState == PlantingBoxScript.BoxState.Empty && currentItem == currentEquippedItem.Seed)
                 {
                     float plantingWidth = other.transform.localScale.x; // Get the width of the planting box
                     float plantingLength = other.transform.localScale.z; // Get the length of the planting box
@@ -107,14 +138,30 @@ public class Tractor_Handler : MonoBehaviour
                     {
                         for (int j = 0; j < numCropsLength; j++) // Loop through the length of the planting box
                         {
-                            GameObject newCrop = Instantiate(Crop, new Vector3(0, 0, 0), Quaternion.identity, other.transform);
-                            newCrop.transform.localScale = new Vector3(.75f, 7.5f, .75f); // Set the scale of the crop object
+                            GameObject newCrop = Instantiate(Seed, new Vector3(0, 0, 0), Quaternion.identity, other.transform);
+                            newCrop.transform.localScale = new Vector3(1/(numCropsWidth+2),1/(numCropsWidth+2),1/(numCropsWidth+2)); // Set the scale of the crop object
                             newCrop.transform.localPosition = new Vector3(-.5f + (i + .5f) * (1 / numCropsWidth), 0, -.5f + (j + .5f) * (1 / numCropsLength)); // Position the crop within the planting box
                         }
                     }
                     plantingBox.currentState = PlantingBoxScript.BoxState.Planted; // Change the state of the planting box to Planted
                 }
+                else if(plantingBox != null && plantingBox.currentState == PlantingBoxScript.BoxState.Planted && currentItem == currentEquippedItem.Fertilizer)
+                {
+                    plantingBox.currentState = PlantingBoxScript.BoxState.Fertilized; // Change the state of the planting box to Fertilized
+                }
+                else if(plantingBox != null && plantingBox.currentState == PlantingBoxScript.BoxState.Fertilized && currentItem == currentEquippedItem.Water)
+                {
+                    plantingBox.currentState = PlantingBoxScript.BoxState.Watered; // Change the state of the planting box to Watered
+                }
             }   
+        }
+    }
+
+    void clearChildrenOfPlot(GameObject plot) // Function to clear the children of a planting box
+    {
+        for(int i = plot.transform.childCount - 1; i >= 2; i--)
+        {
+            Destroy(plot.transform.GetChild(i).gameObject); // Destroy each child object of the planting box
         }
     }
 }

@@ -7,6 +7,9 @@ TagManager:
   - Tractor
   - TractorModel
   - PlanterBox
+  - WaterTower
+  - SeedStorage
+  - FertilizerStorage
   layers:
   - Default
   - TransparentFX
