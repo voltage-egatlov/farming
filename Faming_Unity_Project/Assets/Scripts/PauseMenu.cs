@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement; // Modified
 
 public class PauseMenu : MonoBehaviour
 {
@@ -38,6 +39,8 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         Debug.Log("Loading menu...");
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu"); // Modified: Redirect to the MainMenu scene
     }
 
     public void QuitGame()
