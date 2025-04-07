@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
@@ -25,14 +23,14 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        pauseMenuUI.SetActive(false);
+        pauseMenuUI.SetActive(false);   // ⬅️ Hides all UI under PauseMenu (including slider)
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
 
-    void Pause()
+    public void Pause()
     {
-        pauseMenuUI.SetActive(true);
+        pauseMenuUI.SetActive(true);    // ⬅️ This shows PauseMenu and should show slider too
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
@@ -40,7 +38,6 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         Debug.Log("Loading menu...");
-        // Example: SceneManager.LoadScene("MainMenu"); ← only works if you include UnityEngine.SceneManagement
     }
 
     public void QuitGame()

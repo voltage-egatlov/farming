@@ -8,6 +8,10 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
+    // Optional: public variable to set default volume (for startup)
+    [Range(0f, 1f)]
+    public float masterVolume = 1f;
+
     void Awake()
     {
         // Singleton pattern to ensure only one AudioManager exists
@@ -28,7 +32,7 @@ public class AudioManager : MonoBehaviour
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
-            s.source.volume = s.volume;
+            s.source.volume = s.volume * masterVolume;  // ← apply volume on setup
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
             s.source.playOnAwake = false;
@@ -70,9 +74,17 @@ public class AudioManager : MonoBehaviour
 
     public void SetVolume(float volume)
     {
+        masterVolume = volume;
+
         foreach (Sound s in sounds)
         {
-            s.source.volume = s.volume * volume;
+            float finalVolume = s.volume * Mathf.Max(0.05f, volume);
+            s.source.volume = finalVolume;
+            Debug.Log($"Setting volume for {s.name}: base={s.volume}, slider={volume}, final={finalVolume}");
         }
     }
+
+
+
+
 }
