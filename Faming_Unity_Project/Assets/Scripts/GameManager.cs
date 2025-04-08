@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Level1 ALE"); // Modified: Redirect to Level 1 ALE scene
+        SceneManager.LoadScene("Aiden_Scene_1"); // Modified: Redirect to Level 1 ALE scene
     }
     
     // Return to MainMenu
