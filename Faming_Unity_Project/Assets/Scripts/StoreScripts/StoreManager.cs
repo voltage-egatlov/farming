@@ -8,6 +8,8 @@ public class StoreManager : MonoBehaviour
 {
     public static StoreManager Instance;
 
+    public Tractor_Handler tractorHandler;
+
     public GameObject storeContainer;
     public GameObject tractorPanel;
     public GameObject seedsPanel;
@@ -209,5 +211,42 @@ public class StoreManager : MonoBehaviour
     // Switch back to the main camera
     SwitchToMainCam();
 }
+
+public void UpgradeTractor()
+{
+    int upgradeCost = 200;
+    float speedBoost = 1f;
+
+    if (GameManager.Instance.DeductFunds(upgradeCost))
+    {
+        tractorHandler.forwardSpeed += speedBoost;
+        tractorHandler.reverseSpeed += speedBoost * 0.4f;
+        Debug.Log($"Upgraded tractor! New forward speed: {tractorHandler.forwardSpeed}");
+    }
+    else
+    {
+        Debug.Log("Not enough money to upgrade the tractor.");
+    }
+}
+
+public void DowngradeTractor()
+{
+    int refundAmount = 50;
+    float speedReduction = 1f;
+    float minSpeed = 1f;
+
+    if (tractorHandler.forwardSpeed > minSpeed)
+    {
+        tractorHandler.forwardSpeed = Mathf.Max(minSpeed, tractorHandler.forwardSpeed - speedReduction);
+        tractorHandler.reverseSpeed = Mathf.Max(minSpeed * 0.4f, tractorHandler.reverseSpeed - speedReduction * 0.4f);
+        GameManager.Instance.AddFunds(refundAmount);
+        Debug.Log($"Downgraded tractor. New forward speed: {tractorHandler.forwardSpeed}");
+    }
+    else
+    {
+        Debug.Log("Tractor is already at minimum speed.");
+    }
+}
+
 
 }
