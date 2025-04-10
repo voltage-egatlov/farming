@@ -23,8 +23,9 @@ public class PlantingBoxScript : MonoBehaviour
 
     void Start()
     {
-        // Assign the current game object as the planting visual
-        PlantingVisual = this.gameObject;
+        // Assign the current game object as the planting visual if not set
+        if (PlantingVisual == null)
+            PlantingVisual = this.gameObject;
 
         // Get the Renderer if available
         canSee = PlantingVisual.GetComponent<Renderer>();
@@ -61,7 +62,7 @@ public class PlantingBoxScript : MonoBehaviour
             if (Camera.main != null)
             {
                 floatingText.transform.LookAt(Camera.main.transform.position);
-                floatingText.transform.Rotate(0, 180, 0); // flip
+                floatingText.transform.Rotate(0, 180, 0); // Flip the text
                 floatingText.transform.rotation = Quaternion.Euler(
                     0,
                     floatingText.transform.rotation.eulerAngles.y,
@@ -85,5 +86,46 @@ public class PlantingBoxScript : MonoBehaviour
         {
             canSee.enabled = false;
         }
+    }
+
+    /// <summary>
+    /// Destroys roughly half of the crop objects (child objects tagged "Crop") in this planting box.
+    /// Assumes crop GameObjects are added as children (starting from index 2, preserving essential objects).
+    /// </summary>
+    public void DestroyHalfOfCrops()
+    {
+        // Create a list to hold crop GameObjects
+        List<GameObject> cropObjects = new List<GameObject>();
+
+        // Assume first two children are reserved (e.g., the visual and floating text)
+        for (int i = 2; i < transform.childCount; i++)
+        {
+            GameObject child = transform.GetChild(i).gameObject;
+            if (child.CompareTag("Crop"))
+            {
+                cropObjects.Add(child);
+            }
+        }
+
+        int totalCrops = cropObjects.Count;
+        int cropsToDestroy = totalCrops / 2;  // Destroy approximately half
+
+        // Create a list of indices for random selection
+        List<int> indices = new List<int>();
+        for (int i = 0; i < cropObjects.Count; i++)
+        {
+            indices.Add(i);
+        }
+
+        // Randomly destroy a selected number of crops
+        for (int i = 0; i < cropsToDestroy; i++)
+        {
+            int randIndex = Random.Range(0, indices.Count);
+            int cropIndex = indices[randIndex];
+            Destroy(cropObjects[cropIndex]);
+            indices.RemoveAt(randIndex);
+        }
+
+        Debug.Log($"Destroyed {cropsToDestroy} crops in planting box '{gameObject.name}'.");
     }
 }
