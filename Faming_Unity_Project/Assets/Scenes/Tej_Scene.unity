@@ -682,32 +682,6 @@ MonoBehaviour:
   distance: 10
   smoothSpeed: 0.125
   lookDownAngle: 20
---- !u!1 &495056601 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3257523869681859166, guid: de08d3c4b01f39d4282d15bb29cf9786, type: 3}
-  m_PrefabInstance: {fileID: 1806617465}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &495056603
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495056601}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.06498718, y: 1.9971788, z: 0.059732437}
-  m_Center: {x: 0.15610886, y: -0.4985894, z: -0.35695362}
 --- !u!1 &511664602 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 112229665758965429, guid: de08d3c4b01f39d4282d15bb29cf9786, type: 3}
@@ -2443,10 +2417,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3257523869681859166, guid: de08d3c4b01f39d4282d15bb29cf9786, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 495056603}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de08d3c4b01f39d4282d15bb29cf9786, type: 3}
 --- !u!1 &1807606309 stripped
 GameObject:
