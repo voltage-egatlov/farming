@@ -309,6 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpeedText: {fileID: 0}
+  EquippedText: {fileID: 0}
   tractorRigidbody: {fileID: 0}
   forwardSpeed: 5
   reverseSpeed: 2
@@ -321,6 +322,8 @@ MonoBehaviour:
   BackRightWheel: {fileID: 0}
   BackLeftWheel: {fileID: 0}
   rotateModifier: 10
+  Seed: {fileID: 0}
+  currentItem: 0
 --- !u!54 &253711763848859583
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -606,9 +609,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8767313647797676954}
+  - component: {fileID: 6903540346122864085}
   m_Layer: 0
   m_Name: Tractor1
-  m_TagString: Untagged
+  m_TagString: TractorModel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -646,6 +650,27 @@ Transform:
   m_Father: {fileID: 5233296050809998804}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6903540346122864085
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3257523869681859166}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.06498718, y: 1.9971788, z: 0.059732437}
+  m_Center: {x: 0.15610886, y: -0.4985894, z: -0.35695362}
 --- !u!1 &3671066928997563843
 GameObject:
   m_ObjectHideFlags: 0

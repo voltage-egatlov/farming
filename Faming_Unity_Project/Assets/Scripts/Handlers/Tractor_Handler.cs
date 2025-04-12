@@ -138,10 +138,9 @@ public class Tractor_Handler : MonoBehaviour
                     {
                         for (int j = 0; j < numCropsLength; j++) // Loop through the length of the planting box
                         {
-                            GameObject newCrop = Instantiate(Seed, new Vector3(0, 0, 0), Quaternion.identity, other.transform);
-                            newCrop.transform.localScale = new Vector3(1/(numCropsWidth+2),1/(numCropsWidth+2),1/(numCropsWidth+2)); // Set the scale of the crop object
+                            GameObject newCrop = Instantiate(Seed, new Vector3(1, 1, 1), Quaternion.identity, other.transform);
+                            newCrop.transform.localScale = new Vector3(1/(numCropsWidth+2),1,1/(numCropsWidth+2)); // Set the scale of the crop object
                             newCrop.transform.localPosition = new Vector3(-.5f + (i + .5f) * (1 / numCropsWidth), 0, -.5f + (j + .5f) * (1 / numCropsLength)); // Position the crop within the planting box
-                            newCrop.tag = "Crop";
                         }
                     }
                     plantingBox.currentState = PlantingBoxScript.BoxState.Planted; // Change the state of the planting box to Planted
