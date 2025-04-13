@@ -9,6 +9,14 @@ public class GameManager : MonoBehaviour
     
     public int bankBalance = 1000;  // Starting funds
 
+    public enum Phase
+    {
+        Phase1,  // Store available; no farming yet
+        Phase2,  // Farming actions allowed; store locked
+        Phase3   // (Transitioned via barn)
+    }
+    public Phase currentPhase = Phase.Phase1;
+
     private Dictionary<string, int> seedInventory = new Dictionary<string, int>();
     private Dictionary<string, int> cropInventory = new Dictionary<string, int>();
 

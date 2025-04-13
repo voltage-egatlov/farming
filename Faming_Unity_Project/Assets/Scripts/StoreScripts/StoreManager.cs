@@ -35,22 +35,26 @@ public class StoreManager : MonoBehaviour
 
     public void OpenStore()
     {
+        if (GameManager.Instance.currentPhase != GameManager.Phase.Phase1)
+        {
+            Debug.Log("Store is not accessible in the current phase.");
+            return;
+        }
+
         Debug.Log("Opening store...");
-
+        // (Your existing OpenStore code)
         if (mapPanel != null)
-            mapPanel.SetActive(true); // Show MapPanel again in case it was hidden
-
+            mapPanel.SetActive(true);
         if (purchaseButtonsPanel != null)
-            purchaseButtonsPanel.SetActive(false); // Hide the land purchase buttons
-
+            purchaseButtonsPanel.SetActive(false);
         if (closeButton != null)
-            closeButton.SetActive(false); // Hide the land close button
+            closeButton.SetActive(false);
 
         SwitchToMainCam(); // Always start from main camera
-
         storeContainer.SetActive(true);
         ShowTractorPanel(); // Start on the Tractor panel
     }
+
 
 
     public void CloseStore()
@@ -61,8 +65,16 @@ public class StoreManager : MonoBehaviour
         if (closeButton != null)
             closeButton.SetActive(false);
 
+        // Transition to Phase 2 if currently in Phase 1
+        if (GameManager.Instance.currentPhase == GameManager.Phase.Phase1)
+        {
+            GameManager.Instance.currentPhase = GameManager.Phase.Phase2;
+            Debug.Log("Transitioned to Phase 2: Farming mode.");
+        }
+
         SwitchToMainCam();
     }
+
 
 
     public void ShowTractorPanel()
