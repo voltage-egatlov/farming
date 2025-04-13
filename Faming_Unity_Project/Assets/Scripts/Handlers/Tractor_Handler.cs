@@ -25,7 +25,8 @@ public class Tractor_Handler : MonoBehaviour
     public GameObject BackLeftWheel;
 
     public float rotateModifier = 10f; // Modifier for wheel rotation speed based on tractor's velocity
-z
+
+    public GameObject Seed;
 
     public enum currentEquippedItem
     {

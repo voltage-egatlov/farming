@@ -24,19 +24,35 @@ public class NaturalDisasterManager : MonoBehaviour
     }
 
     /// <summary>
-    /// A coroutine that waits for a random interval (between minInterval and maxInterval)
-    /// then triggers a tornado event, then repeats.
+    /// A coroutine that waits for a random interval (between minInterval and maxInterval),
+    /// then checks if a tornado event should occur (only in Phase 3 and with a 50/50 chance),
+    /// and then repeats.
     /// </summary>
     IEnumerator TornadoEventRoutine()
     {
         while (true)
         {
-            // Wait for a random time interval before triggering the event
+            // Wait for a random time interval before attempting to trigger the tornado event
             float waitTime = Random.Range(minInterval, maxInterval);
             yield return new WaitForSeconds(waitTime);
 
-            // Now trigger the tornado event
-            TriggerTornado();
+            // Tornado events only occur in Phase 3.
+            if (GameManager.Instance.currentPhase == GameManager.Phase.Phase3)
+            {
+                // Implement 50/50 chance (Random.value returns a float between 0 and 1)
+                if (Random.value < 0.5f)
+                {
+                    TriggerTornado();
+                }
+                else
+                {
+                    Debug.Log("Tornado chance rolled false; no tornado event this time.");
+                }
+            }
+            else
+            {
+                Debug.Log("Tornado event skipped since the game is not in Phase 3.");
+            }
         }
     }
 
