@@ -46,7 +46,7 @@ public class CameraController : MonoBehaviour
     public float height = 5f; // Camera height above tractor
     public float distance = 10f; // Camera distance behind tractor
     public float smoothSpeed = 0.125f; // How smooth the position follows
-    public float lookDownAngle = 20f; // Angle to tilt the camera down
+    public float lookDownAngle = 5f; // Angle to tilt the camera down
 
     private Vector3 offset;
 

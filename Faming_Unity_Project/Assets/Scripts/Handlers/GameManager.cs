@@ -12,12 +12,14 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI phaseText; // Reference to the UI Text element for displaying the current phase
     
     public int bankBalance = 1000;  // Starting funds
+    public int harvestedCrops = 0; // Amount of crops harvested
 
     public enum Phase
     {
         Phase1,  // Store available; no farming yet
         Phase2,  // Farming actions allowed; store locked
-        Phase3   // (Transitioned via barn)
+        Phase3,   // (Transitioned via barn)
+        Phase4   // Time to Harvest
     }
     public Phase currentPhase = Phase.Phase1;
 
@@ -44,7 +46,10 @@ public class GameManager : MonoBehaviour
                 phaseText.text = "Phase 2: Farming Open";
                 break;
             case Phase.Phase3:
-                phaseText.text = "Phase 3: Barn Transitioned";
+                phaseText.text = "Phase 3: Tornado Strikes!";
+                break;
+            case Phase.Phase4:
+                phaseText.text = "Phase 4: Time to Harvest";
                 break;
         }
         bankBalanceText.text = "$" + bankBalance.ToString();

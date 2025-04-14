@@ -77,6 +77,7 @@ public class NaturalDisasterManager : MonoBehaviour
 
         // Call a method that goes through each planting box and destroys approximately half the crops
         DestroyHalfTheCropsInPlantingBoxes();
+        GameManager.Instance.currentPhase = GameManager.Phase.Phase4;
     }
 
     /// <summary>

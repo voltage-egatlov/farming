@@ -49,6 +49,8 @@ public class BarnAdvancePhase : MonoBehaviour
                             GameObject newCrop = Instantiate(Crop, Vector3.zero, Quaternion.identity, plantingBox.transform);
                             newCrop.transform.localScale = new Vector3(0.75f, 7.5f, 0.75f);
                             newCrop.transform.localPosition = new Vector3(-0.5f + (i + 0.5f) * (1 / numCropsWidth), 0, -0.5f + (j + 0.5f) * (1 / numCropsLength));
+
+                            newCrop.tag = "Crop"; // Tag the new crop for future reference
                         }
                     }
                     

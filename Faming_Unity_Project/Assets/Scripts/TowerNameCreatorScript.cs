@@ -22,7 +22,7 @@ public class TowerNameCreatorScript : MonoBehaviour
 
 
         TowerName.transform.SetParent(this.transform);
-        TowerName.transform.localPosition = new Vector3(0, 7, 0);
+        TowerName.transform.localPosition = new Vector3(0, 9, 0);
 
         if (this.name=="Store"){
             TowerName.transform.localPosition = new Vector3(-1.5f, 1, .1f);

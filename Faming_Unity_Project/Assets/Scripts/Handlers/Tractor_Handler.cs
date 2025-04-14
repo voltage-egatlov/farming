@@ -110,41 +110,49 @@ public class Tractor_Handler : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        // Only allow planting actions if the game is in Phase 2 (farming mode)
-        if (GameManager.Instance.currentPhase != GameManager.Phase.Phase2)
-            return;
-
         if (other.CompareTag("PlanterBox"))
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 PlantingBoxScript plantingBox = other.GetComponent<PlantingBoxScript>();
-                if (plantingBox != null && plantingBox.currentState == PlantingBoxScript.BoxState.Empty && currentItem == currentEquippedItem.Seed)
+
+                if(GameManager.Instance.currentPhase == GameManager.Phase.Phase2)
                 {
-                    float plantingWidth = other.transform.localScale.x; // Width of the planting box
-                    float plantingLength = other.transform.localScale.z; // Length of the planting box
-
-                    float numCropsWidth = Mathf.Round(plantingWidth * 25); // Calculate number of crops that can fit in the width
-                    float numCropsLength = Mathf.Round(plantingLength * 25); // Calculate number of crops that can fit in the length
-
-                    for (int i = 0; i < numCropsWidth; i++) // Loop through the width
+                    if (plantingBox != null && plantingBox.currentState == PlantingBoxScript.BoxState.Empty && currentItem == currentEquippedItem.Seed)
                     {
-                        for (int j = 0; j < numCropsLength; j++) // Loop through the length
+                        float plantingWidth = other.transform.localScale.x; // Width of the planting box
+                        float plantingLength = other.transform.localScale.z; // Length of the planting box
+
+                        float numCropsWidth = Mathf.Round(plantingWidth * 25); // Calculate number of crops that can fit in the width
+                        float numCropsLength = Mathf.Round(plantingLength * 25); // Calculate number of crops that can fit in the length
+
+                        for (int i = 0; i < numCropsWidth; i++) // Loop through the width
                         {
-                            GameObject newCrop = Instantiate(Seed, new Vector3(1, 1, 1), Quaternion.identity, other.transform);
-                            newCrop.transform.localScale = new Vector3(1/(numCropsWidth+2), 1, 1/(numCropsWidth+2)); // Set crop scale
-                            newCrop.transform.localPosition = new Vector3(-0.5f + (i + 0.5f) * (1 / numCropsWidth), 0, -0.5f + (j + 0.5f) * (1 / numCropsLength)); // Position the crop
+                            for (int j = 0; j < numCropsLength; j++) // Loop through the length
+                            {
+                                GameObject newCrop = Instantiate(Seed, new Vector3(1, 1, 1), Quaternion.identity, other.transform);
+                                newCrop.transform.localScale = new Vector3(1/(numCropsWidth+2), 1, 1/(numCropsWidth+2)); // Set crop scale
+                                newCrop.transform.localPosition = new Vector3(-0.5f + (i + 0.5f) * (1 / numCropsWidth), 0, -0.5f + (j + 0.5f) * (1 / numCropsLength)); // Position the crop
+                            }
                         }
+                        plantingBox.currentState = PlantingBoxScript.BoxState.Planted; // Update state to Planted
                     }
-                    plantingBox.currentState = PlantingBoxScript.BoxState.Planted; // Update state to Planted
+                    else if (plantingBox != null && plantingBox.currentState == PlantingBoxScript.BoxState.Planted && currentItem == currentEquippedItem.Fertilizer)
+                    {
+                        plantingBox.currentState = PlantingBoxScript.BoxState.Fertilized; // Update state to Fertilized
+                    }
+                    else if (plantingBox != null && plantingBox.currentState == PlantingBoxScript.BoxState.Fertilized && currentItem == currentEquippedItem.Water)
+                    {
+                        plantingBox.currentState = PlantingBoxScript.BoxState.Watered; // Update state to Watered
+                    }
                 }
-                else if (plantingBox != null && plantingBox.currentState == PlantingBoxScript.BoxState.Planted && currentItem == currentEquippedItem.Fertilizer)
+                else if (GameManager.Instance.currentPhase == GameManager.Phase.Phase4)
                 {
-                    plantingBox.currentState = PlantingBoxScript.BoxState.Fertilized; // Update state to Fertilized
-                }
-                else if (plantingBox != null && plantingBox.currentState == PlantingBoxScript.BoxState.Fertilized && currentItem == currentEquippedItem.Water)
-                {
-                    plantingBox.currentState = PlantingBoxScript.BoxState.Watered; // Update state to Watered
+                    if (plantingBox != null && plantingBox.currentState == PlantingBoxScript.BoxState.Ready)
+                    {
+                        harvestChildrenOfPlot(other.gameObject); // Clear the planting box
+                        plantingBox.currentState = PlantingBoxScript.BoxState.Empty; // Update state to Empty
+                    }
                 }
             }
         }
@@ -155,6 +163,15 @@ public class Tractor_Handler : MonoBehaviour
         for(int i = plot.transform.childCount - 1; i >= 2; i--)
         {
             Destroy(plot.transform.GetChild(i).gameObject); // Destroy each child object of the planting box
+        }
+    }
+
+    void harvestChildrenOfPlot(GameObject plot) // Function to harvest the children of a planting box
+    {
+        for (int i = plot.transform.childCount - 1; i >= 2; i--)
+        {
+            Destroy(plot.transform.GetChild(i).gameObject); // Destroy each child object of the planting box
+            GameManager.Instance.harvestedCrops++; // Increment the harvested crops counter
         }
     }
 }
