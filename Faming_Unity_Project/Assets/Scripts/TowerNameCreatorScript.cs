@@ -8,6 +8,9 @@ public class TowerNameCreatorScript : MonoBehaviour
     public Camera mainCamera; // Reference to the main camera
     public GameObject TowerName; // Reference to the tower name object
     // Start is called before the first frame update
+
+    public TMP_FontAsset FontAsset;
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -19,7 +22,7 @@ public class TowerNameCreatorScript : MonoBehaviour
         textMeshPro.fontSize = 12;
         textMeshPro.color = Color.white;
         textMeshPro.alignment = TextAlignmentOptions.Center;
-
+        textMeshPro.font = FontAsset;
 
         TowerName.transform.SetParent(this.transform);
         TowerName.transform.localPosition = new Vector3(0, 9, 0);
