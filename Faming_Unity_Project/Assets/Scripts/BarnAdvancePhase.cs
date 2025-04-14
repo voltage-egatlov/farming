@@ -6,13 +6,10 @@ using TMPro;
 public class BarnAdvancePhase : MonoBehaviour
 {
     public GameObject Crop; // Reference to the crop prefab for replanting/harvest
-    public TextMeshProUGUI PhaseText; // UI text component to display phase/harvest info
 
     // Start is called before the first frame update
     void Start()
     {
-        // Optionally, initialize the UI text with the current phase if desired.
-        PhaseText.text = "Phase 2: Farming in progress";
     }
 
     // Update is called once per frame
@@ -52,8 +49,6 @@ public class BarnAdvancePhase : MonoBehaviour
                             GameObject newCrop = Instantiate(Crop, Vector3.zero, Quaternion.identity, plantingBox.transform);
                             newCrop.transform.localScale = new Vector3(0.75f, 7.5f, 0.75f);
                             newCrop.transform.localPosition = new Vector3(-0.5f + (i + 0.5f) * (1 / numCropsWidth), 0, -0.5f + (j + 0.5f) * (1 / numCropsLength));
-                            // Optionally, tag the new crop as "Crop" if needed:
-                            newCrop.tag = "Crop";
                         }
                     }
                     
@@ -69,19 +64,12 @@ public class BarnAdvancePhase : MonoBehaviour
                     plantingBox.currentState = PlantingBoxScript.BoxState.Empty;
                 }
             }
-
-            // Update PhaseText with harvested plot count
-            PhaseText.text = numHarvested + " plots ready to harvest";
             
             // Advance the game phase to Phase 3
             GameManager.Instance.currentPhase = GameManager.Phase.Phase3;
             Debug.Log("Transitioned to Phase 3: Barn reached.");
-            
-            // Optionally, you can update the PhaseText to indicate the new phase.
-            PhaseText.text += "\nPhase 3 initiated.";
         }
     }
-
     // Function to clear the children (crops) of a planting box.
     // Assumes that the first two children are reserved (e.g., for visual elements).
     void clearPlot(GameObject plot)

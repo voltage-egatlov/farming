@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class Tractor_Handler : MonoBehaviour
 {
-    public TextMeshProUGUI SpeedText; // Reference to the UI TextMeshPro component for displaying forward/reverse gear
-    public TextMeshProUGUI EquippedText;
+    public GameObject IconGroup;
 
     public Rigidbody tractorRigidbody; // Reference to the Rigidbody component of the tractor
     public float forwardSpeed = 5f; // Maximum speed of the tractor
@@ -47,11 +45,6 @@ public class Tractor_Handler : MonoBehaviour
             tractorRigidbody = GetComponent<Rigidbody>();
         }
 
-        SpeedText = GameObject.Find("SpeedText").GetComponent<TextMeshProUGUI>(); // Find the UI TextMeshPro component in the scene
-        EquippedText = GameObject.Find("EquippedText").GetComponent<TextMeshProUGUI>(); // Find the UI TextMeshPro component in the scene
-
-        // Initialize the UI text to show the initial gear
-        SpeedText.text ="0"; // Default to forward gear
 
     }
     // Update is called once per frame
@@ -91,10 +84,6 @@ public class Tractor_Handler : MonoBehaviour
             // If no horizontal input is given, stop the tractor from turning
             tractorRigidbody.angularVelocity = Vector3.zero; // Stop rotation
         }
-        
-        SpeedText.text = Mathf.Round(tractorRigidbody.velocity.magnitude*10).ToString(); // Update the UI text to show the current speed of the tractor
-        EquippedText.text = "Equipped: " + currentItem.ToString(); // Update the UI text to show the currently equipped item
-
         // Update wheel rotation based on the tractor's velocity
         FrontLeftWheel.transform.Rotate(0, tractorRigidbody.velocity.x * Time.deltaTime * rotateModifier, 0);
         FrontRightWheel.transform.Rotate(0, tractorRigidbody.velocity.x * Time.deltaTime * rotateModifier, 0);

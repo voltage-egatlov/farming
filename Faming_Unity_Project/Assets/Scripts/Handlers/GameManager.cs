@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
+    public TextMeshProUGUI bankBalanceText; // Reference to the UI Text element for displaying the bank balance
+    public TextMeshProUGUI phaseText; // Reference to the UI Text element for displaying the current phase
     
     public int bankBalance = 1000;  // Starting funds
 
@@ -27,6 +31,23 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void Update()
+    {
+        switch (currentPhase)
+        {
+            case Phase.Phase1:
+                phaseText.text = "Phase 1: Store Open";
+                break;
+            case Phase.Phase2:
+                phaseText.text = "Phase 2: Farming Open";
+                break;
+            case Phase.Phase3:
+                phaseText.text = "Phase 3: Barn Transitioned";
+                break;
+        }
+        bankBalanceText.text = "$" + bankBalance.ToString();
     }
     
     public void AddFunds(int amount)
