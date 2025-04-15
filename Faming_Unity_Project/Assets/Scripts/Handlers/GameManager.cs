@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Official_Level1"); // Modified: Redirect to Level 1 scene
+        SceneManager.LoadScene("Official_Level1_NINAs"); // Modified: Redirect to Level 1 scene
     }
     
     // Return to MainMenu
