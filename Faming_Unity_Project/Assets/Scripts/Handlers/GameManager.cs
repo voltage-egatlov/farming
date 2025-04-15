@@ -104,14 +104,30 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Added " + quantity + " " + cropType + " crop(s). Total: " + cropInventory[cropType]);
     }
-
-    // Method to retrieve the count for a crop
     public int GetCropCount(string cropType)
     {
         if (cropInventory.ContainsKey(cropType))
             return cropInventory[cropType];
         return 0;
     }
+
+    public bool UseSeed(string seedType, int quantity = 1)
+    {
+        // Check if enough seeds exist
+        if (GetSeedCount(seedType) >= quantity)
+        {
+            // Deduct the seeds from inventory
+            seedInventory[seedType] -= quantity;
+            Debug.Log("Used " + quantity + " " + seedType + " seed(s). Remaining: " + seedInventory[seedType]);
+            return true;
+        }
+        else
+        {
+            Debug.Log("Not enough " + seedType + " seeds in inventory.");
+            return false;
+        }
+    }
+
 
     public void StartGame()
     {

@@ -120,6 +120,16 @@ public class Tractor_Handler : MonoBehaviour
                 {
                     if (plantingBox != null && plantingBox.currentState == PlantingBoxScript.BoxState.Empty && currentItem == currentEquippedItem.Seed)
                     {
+                        
+                        string seedType = "Corn";
+
+                        // Check if the inventory has at least one seed of this type.
+                        if (!GameManager.Instance.UseSeed(seedType, 1))
+                        {
+                            Debug.Log("Planting aborted: Not enough " + seedType + " seeds available!");
+                            return;
+                        }
+                        
                         float plantingWidth = other.transform.localScale.x; // Width of the planting box
                         float plantingLength = other.transform.localScale.z; // Length of the planting box
 
