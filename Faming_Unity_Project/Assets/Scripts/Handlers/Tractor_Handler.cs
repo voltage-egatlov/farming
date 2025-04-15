@@ -176,12 +176,23 @@ public class Tractor_Handler : MonoBehaviour
         }
     }
 
-    void harvestChildrenOfPlot(GameObject plot) // Function to harvest the children of a planting box
+    void harvestChildrenOfPlot(GameObject plot)
     {
+        int harvestedCount = 0;
+        // Assumes first two children (indices 0 and 1) are reserved (e.g., visuals or UI elements)
         for (int i = plot.transform.childCount - 1; i >= 2; i--)
         {
-            Destroy(plot.transform.GetChild(i).gameObject); // Destroy each child object of the planting box
-            GameManager.Instance.harvestedCrops++; // Increment the harvested crops counter
+            // Destroy each crop child
+            Destroy(plot.transform.GetChild(i).gameObject);
+            harvestedCount++;
+        }
+        
+        if (harvestedCount > 0)
+        {
+            // Add the harvested crops to inventory. Here we assume the crop type is "Corn".
+            GameManager.Instance.AddCrop("Corn", harvestedCount);
+            Debug.Log("Harvested " + harvestedCount + " crops and added them to inventory.");
         }
     }
+
 }

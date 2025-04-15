@@ -692,9 +692,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 275206975469483622, guid: 695a9652c5e42664e955edb74243e024, type: 3}
+      propertyPath: m_text
+      value: 'Corn Seeds: 5'
+      objectReference: {fileID: 0}
     - target: {fileID: 503630081132357648, guid: 695a9652c5e42664e955edb74243e024, type: 3}
       propertyPath: m_BlockingObjects
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056554427877467823, guid: 695a9652c5e42664e955edb74243e024, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880842866893090740, guid: 695a9652c5e42664e955edb74243e024, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3628616362889325030, guid: 695a9652c5e42664e955edb74243e024, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -872,56 +884,17 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 3988066234339573470, guid: 695a9652c5e42664e955edb74243e024, type: 3}
     - {fileID: 4986845243378375068, guid: 695a9652c5e42664e955edb74243e024, type: 3}
+    - {fileID: 5597676255466094591, guid: 695a9652c5e42664e955edb74243e024, type: 3}
+    - {fileID: 8781141433664944106, guid: 695a9652c5e42664e955edb74243e024, type: 3}
+    - {fileID: 4931650138346522916, guid: 695a9652c5e42664e955edb74243e024, type: 3}
+    - {fileID: 2229376773144373335, guid: 695a9652c5e42664e955edb74243e024, type: 3}
+    - {fileID: 7306913985970341048, guid: 695a9652c5e42664e955edb74243e024, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 695a9652c5e42664e955edb74243e024, type: 3}
---- !u!114 &157601276 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1556878465779373186, guid: 695a9652c5e42664e955edb74243e024, type: 3}
-  m_PrefabInstance: {fileID: 157601275}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &157601279 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6493381386470944213, guid: 695a9652c5e42664e955edb74243e024, type: 3}
-  m_PrefabInstance: {fileID: 157601275}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &157601280 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 275206975469483622, guid: 695a9652c5e42664e955edb74243e024, type: 3}
-  m_PrefabInstance: {fileID: 157601275}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &157601281 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2853950711127861439, guid: 695a9652c5e42664e955edb74243e024, type: 3}
-  m_PrefabInstance: {fileID: 157601275}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &157601282 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5203100955132832866, guid: 695a9652c5e42664e955edb74243e024, type: 3}
   m_PrefabInstance: {fileID: 157601275}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -6122,11 +6095,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryPanel: {fileID: 157601284}
   balanceText: {fileID: 157601283}
-  tomatoSeedText: {fileID: 157601282}
-  carrotSeedText: {fileID: 157601281}
+  tomatoSeedText: {fileID: 0}
+  carrotSeedText: {fileID: 0}
   cornSeedText: {fileID: 157601280}
-  cabbageSeedText: {fileID: 157601279}
-  wheatSeedText: {fileID: 157601276}
+  cabbageSeedText: {fileID: 0}
+  wheatSeedText: {fileID: 0}
+  cornCropText: {fileID: 1679856068}
 --- !u!4 &1645147568
 Transform:
   m_ObjectHideFlags: 0
@@ -6142,6 +6116,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1679856068 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4075730481272143607, guid: 695a9652c5e42664e955edb74243e024, type: 3}
+  m_PrefabInstance: {fileID: 157601275}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1688342746
 GameObject:
   m_ObjectHideFlags: 0
