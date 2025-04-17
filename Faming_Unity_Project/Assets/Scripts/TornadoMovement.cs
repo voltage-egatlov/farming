@@ -3,7 +3,7 @@ using UnityEngine;
 public class TornadoMovement : MonoBehaviour
 {
     public float movementSpeed = 5f; // How fast the tornado moves
-    public Vector3 movementAreaSize = new Vector3(20f, 0, 20f); // Define the area in which the tornado wanders
+    public Vector3 movementAreaSize = new Vector3(5, 0, 5); // Define the area in which the tornado wanders
     
     private Vector3 initialPosition;
     private Vector3 targetPosition;

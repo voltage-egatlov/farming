@@ -15,7 +15,7 @@ public class NaturalDisasterManager : MonoBehaviour
     public float maxInterval = 300f;
 
     // Duration (in seconds) after which the tornado object will be destroyed (when its animation finishes)
-    public float tornadoDuration = 10f;
+    public float tornadoDuration = 100;
 
     void Start()
     {
@@ -46,7 +46,9 @@ public class NaturalDisasterManager : MonoBehaviour
                 }
                 else
                 {
+
                     Debug.Log("Tornado chance rolled false; no tornado event this time.");
+                    GameManager.Instance.currentPhase = GameManager.Phase.Phase4;
                 }
             }
             else
@@ -67,7 +69,9 @@ public class NaturalDisasterManager : MonoBehaviour
         if (tornadoPrefab != null && tornadoSpawnPoint != null)
         {
             // Instantiate the tornado and automatically destroy it after tornadoDuration seconds
-            GameObject tornado = Instantiate(tornadoPrefab, tornadoSpawnPoint.position, tornadoSpawnPoint.rotation);
+            GameObject tornado = Instantiate(tornadoPrefab, tornadoSpawnPoint.position, tornadoSpawnPoint.rotation, tornadoSpawnPoint);
+            DestroyHalfTheCropsInPlantingBoxes();
+            GameManager.Instance.currentPhase = GameManager.Phase.Phase4;
             Destroy(tornado, tornadoDuration);
         }
         else
@@ -76,8 +80,6 @@ public class NaturalDisasterManager : MonoBehaviour
         }
 
         // Call a method that goes through each planting box and destroys approximately half the crops
-        DestroyHalfTheCropsInPlantingBoxes();
-        GameManager.Instance.currentPhase = GameManager.Phase.Phase4;
     }
 
     /// <summary>

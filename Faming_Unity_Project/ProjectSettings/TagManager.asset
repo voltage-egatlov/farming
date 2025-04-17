@@ -10,6 +10,8 @@ TagManager:
   - WaterTower
   - SeedStorage
   - FertilizerStorage
+  - Crop
+  - Tornado
   layers:
   - Default
   - TransparentFX
