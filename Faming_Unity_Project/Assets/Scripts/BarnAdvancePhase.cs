@@ -6,7 +6,7 @@ using TMPro;
 public class BarnAdvancePhase : MonoBehaviour
 {
     public GameObject Crop; // Reference to the crop prefab for replanting/harvest
-
+    public TextMeshProUGUI PhaseText; 
     // Start is called before the first frame update
     void Start()
     {
@@ -18,62 +18,31 @@ public class BarnAdvancePhase : MonoBehaviour
         
     }
 
-    void OnTriggerEnter(Collider other)
+void OnTriggerEnter(Collider other)
+{
+    // Only the tractor in Phase2 can advance to Phase4 (harvesting)
+    if (other.CompareTag("TractorModel") 
+        && GameManager.Instance.currentPhase == GameManager.Phase.Phase2)
     {
-        // Only process if the tractor enters AND we are in Phase 2.
-        if (other.CompareTag("TractorModel") && GameManager.Instance.currentPhase == GameManager.Phase.Phase2)
+        // 1) Advance to Phase4
+        GameManager.Instance.currentPhase = GameManager.Phase.Phase4;
+        PhaseText.text = "Phase 4: Harvesting mode";
+
+        // 2) Find all planting boxes and mark any "Watered" ones as "Ready"
+        var plantingBoxes = FindObjectsOfType<PlantingBoxScript>();
+        foreach (var box in plantingBoxes)
         {
-            PlantingBoxScript[] plantingBoxes = FindObjectsOfType<PlantingBoxScript>();
-            int numHarvested = 0;
-
-            foreach (PlantingBoxScript plantingBox in plantingBoxes)
-            {
-                // Only process boxes that have been watered (ready to be harvested)
-                if (plantingBox.currentState == PlantingBoxScript.BoxState.Watered)
-                {
-                    // Clear existing crops from the planting box
-                    clearPlot(plantingBox.gameObject);
-
-                    float plantingWidth = plantingBox.transform.localScale.x; // width of the box
-                    float plantingLength = plantingBox.transform.localScale.z; // length of the box
-
-                    // Determine how many crops can be placed in width and length (adjust scaling as needed)
-                    float numCropsWidth = Mathf.Round(plantingWidth * 25);
-                    float numCropsLength = Mathf.Round(plantingLength * 25);
-
-                    // Instantiate new crops to simulate harvesting/replanting:
-                    for (int i = 0; i < numCropsWidth; i++)
-                    {
-                        for (int j = 0; j < numCropsLength; j++)
-                        {
-                            GameObject newCrop = Instantiate(Crop, Vector3.zero, Quaternion.identity, plantingBox.transform);
-                            newCrop.transform.localScale = new Vector3(0.75f, 7.5f, 0.75f);
-                            newCrop.transform.localPosition = new Vector3(-0.5f + (i + 0.5f) * (1 / numCropsWidth), 0, -0.5f + (j + 0.5f) * (1 / numCropsLength));
-
-                            newCrop.tag = "Crop"; // Tag the new crop for future reference
-                        }
-                    }
-                    
-                    // Set the box state to Ready after processing
-                    plantingBox.currentState = PlantingBoxScript.BoxState.Ready;
-                    numHarvested++;
-                }
-                // For boxes that are not in an empty or ready state, clear them and mark as empty.
-                if (plantingBox.currentState != PlantingBoxScript.BoxState.Empty &&
-                    plantingBox.currentState != PlantingBoxScript.BoxState.Ready)
-                {
-                    clearPlot(plantingBox.gameObject);
-                    plantingBox.currentState = PlantingBoxScript.BoxState.Empty;
-                }
-            }
-            
-            // Advance the game phase to Phase 3
-            GameManager.Instance.currentPhase = GameManager.Phase.Phase3;
-            Debug.Log("Transitioned to Phase 3: Barn reached.");
+            if (box.currentState == PlantingBoxScript.BoxState.Watered)
+                box.currentState = PlantingBoxScript.BoxState.Ready;
         }
+
+        Debug.Log("Entered barn → Phase4. All watered boxes are now Ready.");
     }
-    // Function to clear the children (crops) of a planting box.
-    // Assumes that the first two children are reserved (e.g., for visual elements).
+}
+
+
+
+
     void clearPlot(GameObject plot)
     {
         for (int i = plot.transform.childCount - 1; i >= 2; i--)
