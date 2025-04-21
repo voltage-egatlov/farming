@@ -1,11 +1,13 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Modified
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
+
+    public GameObject[] objectsToHide;
 
     void Update()
     {
@@ -24,23 +26,35 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        pauseMenuUI.SetActive(false);   // ⬅️ Hides all UI under PauseMenu (including slider)
+        pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+
+        foreach (GameObject obj in objectsToHide)
+        {
+            if (obj != null)
+                obj.SetActive(true);
+        }
     }
 
     public void Pause()
     {
-        pauseMenuUI.SetActive(true);    // ⬅️ This shows PauseMenu and should show slider too
+        pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+
+        foreach (GameObject obj in objectsToHide)
+        {
+            if (obj != null)
+                obj.SetActive(false);
+        }
     }
 
     public void LoadMenu()
     {
         Debug.Log("Loading menu...");
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu"); // Modified: Redirect to the MainMenu scene
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void QuitGame()
