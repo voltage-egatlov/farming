@@ -960,10 +960,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f189fe51aecf41448b9657cc29ca92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tractorHandler: {fileID: 0}
   storeContainer: {fileID: 1962927390}
   tractorPanel: {fileID: 2136271711}
   seedsPanel: {fileID: 133159004}
   futurePanel: {fileID: 1532887977}
+  closeButton: {fileID: 0}
+  mapPanel: {fileID: 0}
+  purchaseButtonsPanel: {fileID: 0}
+  landPurchaseButtons: []
+  landPlots: []
+  selectedPlot: {fileID: 0}
   mainCam: {fileID: 379829687}
   landCam: {fileID: 108227731}
 --- !u!4 &345933619
@@ -1087,11 +1094,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tractor: {fileID: 8400204899631955342}
-  offset: {x: 0, y: 0, z: 0}
   height: 5
   distance: 10
   smoothSpeed: 0.125
-  rotationSpeed: 5
+  lookDownAngle: 5
 --- !u!1 &403564089
 GameObject:
   m_ObjectHideFlags: 0
@@ -3739,7 +3745,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b66dc83a483164db1a4e67818b4653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bankBalanceText: {fileID: 0}
+  phaseText: {fileID: 0}
   bankBalance: 1000
+  harvestedCrops: 0
+  currentPhase: 0
 --- !u!4 &1783354933
 Transform:
   m_ObjectHideFlags: 0
@@ -4747,7 +4757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2989dae2e4dbcbf46baa0cce145a388f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedText: {fileID: 0}
+  IconGroup: {fileID: 0}
   tractorRigidbody: {fileID: 0}
   forwardSpeed: 5
   reverseSpeed: 2
@@ -4760,7 +4770,8 @@ MonoBehaviour:
   BackRightWheel: {fileID: 0}
   BackLeftWheel: {fileID: 0}
   rotateModifier: 10
-  Crop: {fileID: 0}
+  Seed: {fileID: 0}
+  currentItem: 0
 --- !u!54 &8400204899631955341
 Rigidbody:
   m_ObjectHideFlags: 0
