@@ -42,7 +42,6 @@ public class StoreManager : MonoBehaviour
         }
 
         Debug.Log("Opening store...");
-        // (Your existing OpenStore code)
         if (mapPanel != null)
             mapPanel.SetActive(true);
         if (purchaseButtonsPanel != null)
@@ -52,7 +51,11 @@ public class StoreManager : MonoBehaviour
 
         SwitchToMainCam(); // Always start from main camera
         storeContainer.SetActive(true);
-        ShowTractorPanel(); // Start on the Tractor panel
+
+        // 👇 Just deactivate individual panels instead of forcing the Tractor Panel
+        tractorPanel.SetActive(false);
+        seedsPanel.SetActive(false);
+        futurePanel.SetActive(false);
     }
 
 

@@ -8,13 +8,11 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
-    // Optional: public variable to set default volume (for startup)
     [Range(0f, 1f)]
     public float masterVolume = 1f;
 
     void Awake()
     {
-        // Singleton pattern to ensure only one AudioManager exists
         if (instance == null)
         {
             instance = this;
@@ -25,14 +23,19 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        DontDestroyOnLoad(gameObject); // Keep across scenes
+        DontDestroyOnLoad(gameObject);
 
-        // Set up each sound’s AudioSource
         foreach (Sound s in sounds)
         {
+            if (s == null || s.clip == null)
+            {
+                Debug.LogWarning("Skipping null sound or missing clip.");
+                continue;
+            }
+
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
-            s.source.volume = s.volume * masterVolume;  // ← apply volume on setup
+            s.source.volume = s.volume * masterVolume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
             s.source.playOnAwake = false;
@@ -41,13 +44,12 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        // Automatically play the background music
         Play("MainTheme");
     }
 
     public void Play(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Sound s = Array.Find(sounds, sound => sound != null && sound.name == name);
         if (s == null)
         {
             Debug.LogWarning("Sound not found: " + name);
@@ -62,7 +64,7 @@ public class AudioManager : MonoBehaviour
 
     public void Stop(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Sound s = Array.Find(sounds, sound => sound != null && sound.name == name);
         if (s == null)
         {
             Debug.LogWarning("Sound not found: " + name);
@@ -78,13 +80,15 @@ public class AudioManager : MonoBehaviour
 
         foreach (Sound s in sounds)
         {
+            if (s == null || s.source == null)
+            {
+                Debug.LogWarning("A sound is missing or has no AudioSource assigned!");
+                continue;
+            }
+
             float finalVolume = s.volume * Mathf.Max(0.05f, volume);
             s.source.volume = finalVolume;
             Debug.Log($"Setting volume for {s.name}: base={s.volume}, slider={volume}, final={finalVolume}");
         }
     }
-
-
-
-
 }
