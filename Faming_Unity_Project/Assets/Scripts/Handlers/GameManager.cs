@@ -19,7 +19,8 @@ public class GameManager : MonoBehaviour
         Phase1,  // Store available; no farming yet
         Phase2,  // Farming actions allowed; store locked
         Phase3,   // (Transitioned via barn)
-        Phase4   // Time to Harvest
+        Phase4,   // Time to Harvest
+        Phase5   // Go to Farm Stand
     }
     public Phase currentPhase = Phase.Phase1;
 
@@ -49,7 +50,10 @@ public class GameManager : MonoBehaviour
             //    phaseText.text = "Phase 3: Tornado Strikes!";
             //    break;
             case Phase.Phase4:
-                phaseText.text = "Phase 3: Time to Harvest";
+                phaseText.text = "Phase 4: Time to Harvest";
+                break;
+            case Phase.Phase5:
+                phaseText.text = "Phase 5: Go To Farm Stand";
                 break;
         }
         bankBalanceText.text = "$" + bankBalance.ToString();

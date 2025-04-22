@@ -24,6 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Official_Level1_NINAs.unity
     guid: 70b45773c4cc34348aa60d0de3990725
   - enabled: 1
-    path: Assets/Scenes/Official_Level1.unity
+    path: Assets/Scenes/yoyo.unity
     guid: 8f0c06eaf56cd41209df37ec88437bc2
   m_configObjects: {}
