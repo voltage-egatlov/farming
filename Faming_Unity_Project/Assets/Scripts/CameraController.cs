@@ -48,6 +48,14 @@ public class CameraController : MonoBehaviour
     public float smoothSpeed = 0.125f; // How smooth the position follows
     public float lookDownAngle = 5f; // Angle to tilt the camera down
 
+    // Pan setting
+    public float lookSpeed = 5f;       
+    public float minPitch = -30f;      
+    public float maxPitch = 60f;
+
+    float yaw;       
+    float pitch;     
+
     private Vector3 offset;
 
     void Start()
@@ -56,11 +64,37 @@ public class CameraController : MonoBehaviour
             tractor = GameObject.FindGameObjectWithTag("Tractor").transform;
 
         offset = new Vector3(0, height, -distance);
+
+        var e = transform.rotation.eulerAngles;
+        yaw = e.y;
+        pitch = e.x;
     }
 
     void LateUpdate()
     {
         if (tractor == null) return;
+
+        // Pan mode
+        if (Input.GetMouseButtonDown(1))
+        {
+            var e = transform.rotation.eulerAngles;
+            yaw = e.y;
+            pitch = e.x;
+        }
+
+        if (Input.GetMouseButton(1))
+        {
+            // accumulate mouse movement
+            yaw += Input.GetAxis("Mouse X") * lookSpeed;
+            pitch -= Input.GetAxis("Mouse Y") * lookSpeed;
+            pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
+
+            Vector3 desiredPos = tractor.position + tractor.rotation * offset;
+            transform.position = Vector3.Lerp(transform.position, desiredPos, smoothSpeed);
+
+            transform.rotation = Quaternion.Euler(pitch, yaw, 0f);
+            return; 
+        }
 
         // Rotate the offset to stay behind the tractor
         Vector3 rotatedOffset = tractor.rotation * offset;
