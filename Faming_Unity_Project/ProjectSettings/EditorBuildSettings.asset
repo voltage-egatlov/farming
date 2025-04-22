@@ -22,8 +22,8 @@ EditorBuildSettings:
     guid: 63208cb8520f3c346abd2d94c7ca3b30
   - enabled: 1
     path: Assets/Scenes/Official_Level1_NINAs.unity
-    guid: a544309bb652a97449c82a73749698d8
-  - enabled: 0
+    guid: 70b45773c4cc34348aa60d0de3990725
+  - enabled: 1
     path: Assets/Scenes/Official_Level1.unity
-    guid: 21908af8a90f05f498fa61fc26d9d304
+    guid: 8f0c06eaf56cd41209df37ec88437bc2
   m_configObjects: {}
