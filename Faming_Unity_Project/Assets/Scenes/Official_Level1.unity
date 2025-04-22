@@ -3760,7 +3760,7 @@ GameObject:
   - component: {fileID: 1079682772}
   - component: {fileID: 1079682771}
   m_Layer: 5
-  m_Name: PurchaseGameButtons
+  m_Name: PurchaseLandButtons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5904,6 +5904,9 @@ MonoBehaviour:
   distance: 10
   smoothSpeed: 0.125
   lookDownAngle: 20
+  lookSpeed: 5
+  minPitch: -30
+  maxPitch: 60
 --- !u!1 &1557128870
 GameObject:
   m_ObjectHideFlags: 0
