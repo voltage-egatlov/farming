@@ -45,11 +45,11 @@ public class GameManager : MonoBehaviour
             case Phase.Phase2:
                 phaseText.text = "Phase 2: Farming Open";
                 break;
-            case Phase.Phase3:
-                phaseText.text = "Phase 3: Tornado Strikes!";
-                break;
+            //case Phase.Phase3:
+            //    phaseText.text = "Phase 3: Tornado Strikes!";
+            //    break;
             case Phase.Phase4:
-                phaseText.text = "Phase 4: Time to Harvest";
+                phaseText.text = "Phase 3: Time to Harvest";
                 break;
         }
         bankBalanceText.text = "$" + bankBalance.ToString();
