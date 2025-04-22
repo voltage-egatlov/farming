@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlantingVisual: {fileID: 0}
+  IconsPrefab: {fileID: 3739833253364760910, guid: 3b813c1331dd35241b4753ee1acbe53d, type: 3}
+  floatingIcons: {fileID: 0}
   currentState: 0
 --- !u!1 &6073398649032518652
 GameObject:

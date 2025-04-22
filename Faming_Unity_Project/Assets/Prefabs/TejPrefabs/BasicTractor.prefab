@@ -309,8 +309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2989dae2e4dbcbf46baa0cce145a388f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedText: {fileID: 0}
-  EquippedText: {fileID: 0}
   tractorRigidbody: {fileID: 0}
   forwardSpeed: 5
   reverseSpeed: 2
@@ -323,6 +321,7 @@ MonoBehaviour:
   BackRightWheel: {fileID: 972811102812238460}
   BackLeftWheel: {fileID: 6474853658926042740}
   rotateModifier: 50
+  canMove: 1
   Seed: {fileID: 7525663636032338333, guid: c414fc4db4cf4ce40aefe605eef0a2d7, type: 3}
   currentItem: 0
 --- !u!54 &253711763848859583
@@ -350,7 +349,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &2560625015904761184
 BoxCollider:

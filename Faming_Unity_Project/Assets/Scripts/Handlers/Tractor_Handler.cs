@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Tractor_Handler : MonoBehaviour
 {
-    public GameObject IconGroup;
-
     public Rigidbody tractorRigidbody;
     public float forwardSpeed = 5f;
     public float reverseSpeed = 2f;
@@ -21,6 +19,8 @@ public class Tractor_Handler : MonoBehaviour
     public GameObject BackLeftWheel;
     public float rotateModifier = 10f;
 
+    public bool canMove = true;
+
     public GameObject Seed;
 
     public enum currentEquippedItem { None, Seed, Fertilizer, Water }
@@ -35,8 +35,17 @@ public class Tractor_Handler : MonoBehaviour
     void Update()
     {
         // Handle driving input...
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput   = Input.GetAxis("Vertical");
+
+        if(!canMove){
+            horizontalInput = 0f;
+            verticalInput = 0;
+        }
+        else
+        {
+            // Allow movement only if the tractor is not in a cutscene or other non-movement state
+            horizontalInput = Input.GetAxis("Horizontal");
+            verticalInput   = Input.GetAxis("Vertical");
+        }
 
         if (verticalInput > 0)
         {
@@ -80,6 +89,18 @@ public class Tractor_Handler : MonoBehaviour
             currentItem = currentEquippedItem.Fertilizer;
         else if (Input.GetKeyDown(KeyCode.Alpha3))
             currentItem = currentEquippedItem.Water;
+
+        //Shift to make the tractor move faster
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        {
+            forwardSpeed *= 2f;
+            reverseSpeed *= 2f;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift))
+        {
+            forwardSpeed /= 2f;
+            reverseSpeed /= 2f;
+        }
     }
 
     //void OnTriggerEnter(Collider other)
@@ -104,7 +125,7 @@ public class Tractor_Handler : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 // Planting
-                if (box.currentState == PlantingBoxScript.BoxState.Empty
+                if (box.currentState == BoxState.Empty
                     && currentItem == currentEquippedItem.Seed)
                 {
                     const string seedType = "Corn";
@@ -134,19 +155,19 @@ public class Tractor_Handler : MonoBehaviour
                             );
                             newCrop.tag = "Crop";
                         }
-                    box.currentState = PlantingBoxScript.BoxState.Planted;
+                    box.currentState = BoxState.Planted;
                 }
                 // Fertilizing
-                else if (box.currentState == PlantingBoxScript.BoxState.Planted
+                else if (box.currentState == BoxState.Planted
                          && currentItem == currentEquippedItem.Fertilizer)
                 {
-                    box.currentState = PlantingBoxScript.BoxState.Fertilized;
+                    box.currentState = BoxState.Fertilized;
                 }
                 // Watering
-                else if (box.currentState == PlantingBoxScript.BoxState.Fertilized
+                else if (box.currentState == BoxState.Fertilized
                          && currentItem == currentEquippedItem.Water)
                 {
-                    box.currentState = PlantingBoxScript.BoxState.Watered;
+                    box.currentState = BoxState.Watered;
                 }
             }
             return;
@@ -155,7 +176,7 @@ public class Tractor_Handler : MonoBehaviour
         // PHASE 4: Manual Harvesting
         if (GameManager.Instance.currentPhase == GameManager.Phase.Phase4)
         {
-            if (box.currentState == PlantingBoxScript.BoxState.Ready
+            if (box.currentState == BoxState.Ready
                 && Input.GetKeyDown(KeyCode.Space))
             {
                 HarvestPlot(box);
@@ -185,6 +206,6 @@ public class Tractor_Handler : MonoBehaviour
             Debug.Log($"Harvested {harvestedCount} Corn into inventory.");
         }
 
-        box.currentState = PlantingBoxScript.BoxState.Empty;
+        box.currentState = BoxState.Empty;
     }
 }

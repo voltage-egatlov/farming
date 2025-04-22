@@ -32,8 +32,8 @@ void OnTriggerEnter(Collider other)
         var plantingBoxes = FindObjectsOfType<PlantingBoxScript>();
         foreach (var box in plantingBoxes)
         {
-            if (box.currentState == PlantingBoxScript.BoxState.Watered)
-                box.currentState = PlantingBoxScript.BoxState.Ready;
+            if (box.currentState == BoxState.Watered)
+                box.currentState = BoxState.Ready;
         }
 
         Debug.Log("Entered barn → Phase4. All watered boxes are now Ready.");

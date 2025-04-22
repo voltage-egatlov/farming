@@ -43,6 +43,7 @@ public class StoreManager : MonoBehaviour
 
         Debug.Log("Opening store...");
         // (Your existing OpenStore code)
+        tractorHandler.canMove = false; // Prevent tractor movement while in store
         if (mapPanel != null)
             mapPanel.SetActive(true);
         if (purchaseButtonsPanel != null)
@@ -60,6 +61,7 @@ public class StoreManager : MonoBehaviour
     public void CloseStore()
     {
         storeContainer.SetActive(false);
+        tractorHandler.canMove = true; // Allow tractor movement again
 
         // Optional: hide close button when closing store
         if (closeButton != null)
