@@ -72,17 +72,25 @@ public class Tractor_Handler : MonoBehaviour
         FrontRightWheel.transform.Rotate(0, wheelRot, 0);
         BackLeftWheel.transform.Rotate(0, wheelRot, 0);
         BackRightWheel.transform.Rotate(0, wheelRot, 0);
-    }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("SeedStorage"))
+        // Modified equipping method
+        if (Input.GetKeyDown(KeyCode.Alpha1))
             currentItem = currentEquippedItem.Seed;
-        else if (other.CompareTag("FertilizerStorage"))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
             currentItem = currentEquippedItem.Fertilizer;
-        else if (other.CompareTag("WaterTower"))
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
             currentItem = currentEquippedItem.Water;
     }
+
+    //void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("SeedStorage"))
+    //        currentItem = currentEquippedItem.Seed;
+    //    else if (other.CompareTag("FertilizerStorage"))
+    //        currentItem = currentEquippedItem.Fertilizer;
+    //    else if (other.CompareTag("WaterTower"))
+    //        currentItem = currentEquippedItem.Water;
+    //}
 
     void OnTriggerStay(Collider other)
     {
