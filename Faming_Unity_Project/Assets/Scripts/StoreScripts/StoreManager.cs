@@ -42,6 +42,7 @@ public class StoreManager : MonoBehaviour
         }
 
         Debug.Log("Opening store...");
+        // (Your existing OpenStore code)
         if (mapPanel != null)
             mapPanel.SetActive(true);
         if (purchaseButtonsPanel != null)
@@ -51,11 +52,7 @@ public class StoreManager : MonoBehaviour
 
         SwitchToMainCam(); // Always start from main camera
         storeContainer.SetActive(true);
-
-        // 👇 Just deactivate individual panels instead of forcing the Tractor Panel
-        tractorPanel.SetActive(false);
-        seedsPanel.SetActive(false);
-        futurePanel.SetActive(false);
+        ShowTractorPanel(); // Start on the Tractor panel
     }
 
 
@@ -212,56 +209,57 @@ public class StoreManager : MonoBehaviour
     }
 
     public void CloseLandView()
-{
-    Debug.Log("Closing land view and returning to main cam.");
+    {
+        Debug.Log("Closing land view and returning to main cam.");
 
-    // Hide the land purchase buttons
-    if (purchaseButtonsPanel != null)
-        purchaseButtonsPanel.SetActive(false);
+        // Hide the land purchase buttons
+        if (purchaseButtonsPanel != null)
+            purchaseButtonsPanel.SetActive(false);
 
-    // Hide the close button itself
-    if (closeButton != null)
-        closeButton.SetActive(false);
+        // Hide the close button itself
+        if (closeButton != null)
+            closeButton.SetActive(false);
 
-    // Switch back to the main camera
-    SwitchToMainCam();
+        // Switch back to the main camera
+        SwitchToMainCam();
+    }
+
+    public void UpgradeTractor()
+    {
+        int upgradeCost = 200;
+        float speedBoost = 1f;
+
+        if (GameManager.Instance.DeductFunds(upgradeCost))
+        {
+            tractorHandler.forwardSpeed += speedBoost;
+            tractorHandler.reverseSpeed += speedBoost * 0.4f;
+            Debug.Log($"Upgraded tractor! New forward speed: {tractorHandler.forwardSpeed}");
+        }
+        else
+        {
+            Debug.Log("Not enough money to upgrade the tractor.");
+        }
+    }
+
+    public void DowngradeTractor()
+    {
+        int refundAmount = 50;
+        float speedReduction = 1f;
+        float minSpeed = 1f;
+
+        if (tractorHandler.forwardSpeed > minSpeed)
+        {
+            tractorHandler.forwardSpeed = Mathf.Max(minSpeed, tractorHandler.forwardSpeed - speedReduction);
+            tractorHandler.reverseSpeed = Mathf.Max(minSpeed * 0.4f, tractorHandler.reverseSpeed - speedReduction * 0.4f);
+            GameManager.Instance.AddFunds(refundAmount);
+            Debug.Log($"Downgraded tractor. New forward speed: {tractorHandler.forwardSpeed}");
+        }
+        else
+        {
+            Debug.Log("Tractor is already at minimum speed.");
+        }
+    }
+
+
 }
 
-public void UpgradeTractor()
-{
-    int upgradeCost = 200;
-    float speedBoost = 1f;
-
-    if (GameManager.Instance.DeductFunds(upgradeCost))
-    {
-        tractorHandler.forwardSpeed += speedBoost;
-        tractorHandler.reverseSpeed += speedBoost * 0.4f;
-        Debug.Log($"Upgraded tractor! New forward speed: {tractorHandler.forwardSpeed}");
-    }
-    else
-    {
-        Debug.Log("Not enough money to upgrade the tractor.");
-    }
-}
-
-public void DowngradeTractor()
-{
-    int refundAmount = 50;
-    float speedReduction = 1f;
-    float minSpeed = 1f;
-
-    if (tractorHandler.forwardSpeed > minSpeed)
-    {
-        tractorHandler.forwardSpeed = Mathf.Max(minSpeed, tractorHandler.forwardSpeed - speedReduction);
-        tractorHandler.reverseSpeed = Mathf.Max(minSpeed * 0.4f, tractorHandler.reverseSpeed - speedReduction * 0.4f);
-        GameManager.Instance.AddFunds(refundAmount);
-        Debug.Log($"Downgraded tractor. New forward speed: {tractorHandler.forwardSpeed}");
-    }
-    else
-    {
-        Debug.Log("Tractor is already at minimum speed.");
-    }
-}
-
-
-}
