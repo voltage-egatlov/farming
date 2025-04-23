@@ -47,13 +47,13 @@ public class NaturalDisasterManager : MonoBehaviour
                 else
                 {
 
-                    Debug.Log("Tornado chance rolled false; no tornado event this time.");
+                    // Debug.Log("Tornado chance rolled false; no tornado event this time.");
                     GameManager.Instance.currentPhase = GameManager.Phase.Phase4;
                 }
             }
             else
             {
-                Debug.Log("Tornado event skipped since the game is not in Phase 3.");
+                // Debug.Log("Tornado event skipped since the game is not in Phase 3.");
             }
         }
     }

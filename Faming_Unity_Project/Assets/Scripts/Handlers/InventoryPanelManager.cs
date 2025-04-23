@@ -35,6 +35,19 @@ public class InventoryPanelManager : MonoBehaviour
         inventoryPanel.SetActive(false);
     }
 
+    public void ToggleInventory()
+    {
+         if (inventoryPanel.activeSelf)
+        {
+            inventoryPanel.SetActive(false);
+        }
+        else
+        {
+            UpdateInventoryDisplay();
+            inventoryPanel.SetActive(true);
+        }
+    }
+
     // Update all UI text fields with data from GameManager
     private void UpdateInventoryDisplay()
     {

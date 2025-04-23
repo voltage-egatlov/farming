@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI phaseText; // Reference to the UI Text element for displaying the current phase
     
     public int bankBalance = 1000;  // Starting funds
-    public int harvestedCrops = 0; // Amount of crops harvested
+    public int currentCropPrice = 0;
 
     public enum Phase
     {
@@ -115,6 +115,11 @@ public class GameManager : MonoBehaviour
         return 0;
     }
 
+    public int GetCropPrice(){
+        //Randomly generate a price for crops
+        return Random.Range(20, 50); // Example price range between $50 and $200
+    }
+
     public bool UseSeed(string seedType, int quantity = 1)
     {
         // Check if enough seeds exist
@@ -130,6 +135,22 @@ public class GameManager : MonoBehaviour
             Debug.Log("Not enough " + seedType + " seeds in inventory.");
             return false;
         }
+    }
+
+    public void SellCrops()
+    {
+        // Calculate total earnings from harvested crops
+        int earnings = GetCropCount("Crop") * currentCropPrice;
+        AddFunds(earnings);
+        
+        // Reset harvested crops count
+        seedInventory["Corn"] =0;
+    }
+
+    public void ResetGame()
+    {
+        currentPhase = Phase.Phase1;
+
     }
 
 

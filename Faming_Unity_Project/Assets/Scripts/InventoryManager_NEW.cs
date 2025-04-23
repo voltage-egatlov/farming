@@ -15,9 +15,6 @@ public class InventoryManager_NEW : MonoBehaviour
 
     public TMP_Text cornCropText;
 
-    private bool isOpen = false;
-
-
     public void ToggleInventory()
     {
          if (inventoryPanel.activeSelf)

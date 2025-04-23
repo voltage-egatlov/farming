@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Aiden_Scene_1.unity
     guid: 63208cb8520f3c346abd2d94c7ca3b30
   - enabled: 1
+    path: Assets/Scenes/Official_Level1.unity
+    guid: 36acdff34363047019212b31d8aa6d4a
+  - enabled: 0
     path: Assets/Scenes/Official_Level1_NINAs.unity
     guid: 70b45773c4cc34348aa60d0de3990725
   - enabled: 1
