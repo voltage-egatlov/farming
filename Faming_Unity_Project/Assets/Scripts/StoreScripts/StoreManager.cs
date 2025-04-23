@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,12 +7,6 @@ using TMPro;
 public class StoreManager : MonoBehaviour
 {
     public static StoreManager Instance;
-
-    //// Tutorial hooks
-    //public Action OnStoreOpened;
-    //public Action OnLandPurchased;
-    //public Action OnSeedPurchased;
-    //public Action OnTractorUpgraded;
 
     public Tractor_Handler tractorHandler;
 
@@ -49,6 +42,7 @@ public class StoreManager : MonoBehaviour
         }
 
         Debug.Log("Opening store...");
+        // (Your existing OpenStore code)
         if (mapPanel != null)
             mapPanel.SetActive(true);
         if (purchaseButtonsPanel != null)
@@ -56,12 +50,9 @@ public class StoreManager : MonoBehaviour
         if (closeButton != null)
             closeButton.SetActive(false);
 
-        SwitchToMainCam();
+        SwitchToMainCam(); // Always start from main camera
         storeContainer.SetActive(true);
-        ShowTractorPanel();
-
-        //// ① Fire the tutorial event when the store opens
-        //OnStoreOpened?.Invoke();
+        ShowTractorPanel(); // Start on the Tractor panel
     }
 
 
@@ -69,9 +60,12 @@ public class StoreManager : MonoBehaviour
     public void CloseStore()
     {
         storeContainer.SetActive(false);
+
+        // Optional: hide close button when closing store
         if (closeButton != null)
             closeButton.SetActive(false);
 
+        // Transition to Phase 2 if currently in Phase 1
         if (GameManager.Instance.currentPhase == GameManager.Phase.Phase1)
         {
             GameManager.Instance.currentPhase = GameManager.Phase.Phase2;
@@ -108,6 +102,7 @@ public class StoreManager : MonoBehaviour
     {
         Debug.Log("Switching to LandCam, hiding entire MapPanel, showing purchase buttons");
 
+        // Disable the entire MapPanel
         if (mapPanel != null)
         {
             mapPanel.SetActive(false);
@@ -120,6 +115,7 @@ public class StoreManager : MonoBehaviour
             Debug.Log("Close button activated: " + closeButton.name);
         }
 
+        // Show land purchase buttons
         if (purchaseButtonsPanel != null)
             purchaseButtonsPanel.SetActive(true);
 
@@ -152,22 +148,9 @@ public class StoreManager : MonoBehaviour
         if (index >= 0 && index < landPlots.Length)
         {
             landPlots[index].Purchase();
-            UpdateLandButtons();
-
-            //// ② Fire the tutorial event when land is bought
-            //OnLandPurchased?.Invoke();
+            UpdateLandButtons(); // Refresh the UI
         }
     }
-
-    // TODO: wherever you implement seed‐buying, add:
-    //      OnSeedPurchased?.Invoke();
-    // for example:
-    //
-    // public void PurchaseSeed(int seedIndex)
-    // {
-    //     // your existing seed‐buy logic…
-    //     OnSeedPurchased?.Invoke();
-    // }
 
     private void SwitchToLandCam()
     {
@@ -222,9 +205,6 @@ public class StoreManager : MonoBehaviour
         {
             selectedPlot.Purchase();
             UpdateLandButtons();
-
-            // ③ Fire the tutorial event when the tractor is upgraded/bought
-            // but here we’ll invoke OnTractorUpgraded in the UpgradeTractor() below
         }
     }
 
@@ -232,12 +212,15 @@ public class StoreManager : MonoBehaviour
     {
         Debug.Log("Closing land view and returning to main cam.");
 
+        // Hide the land purchase buttons
         if (purchaseButtonsPanel != null)
             purchaseButtonsPanel.SetActive(false);
 
+        // Hide the close button itself
         if (closeButton != null)
             closeButton.SetActive(false);
 
+        // Switch back to the main camera
         SwitchToMainCam();
     }
 
@@ -251,9 +234,6 @@ public class StoreManager : MonoBehaviour
             tractorHandler.forwardSpeed += speedBoost;
             tractorHandler.reverseSpeed += speedBoost * 0.4f;
             Debug.Log($"Upgraded tractor! New forward speed: {tractorHandler.forwardSpeed}");
-
-            //// ③ Fire the tutorial event when the tractor is upgraded
-            //OnTractorUpgraded?.Invoke();
         }
         else
         {
@@ -279,4 +259,7 @@ public class StoreManager : MonoBehaviour
             Debug.Log("Tractor is already at minimum speed.");
         }
     }
+
+
 }
+
