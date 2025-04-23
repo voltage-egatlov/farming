@@ -140,11 +140,12 @@ public class GameManager : MonoBehaviour
     public void SellCrops()
     {
         // Calculate total earnings from harvested crops
-        int earnings = GetCropCount("Crop") * currentCropPrice;
+        int earnings = GetCropCount("Corn") * currentCropPrice;
         AddFunds(earnings);
         
         // Reset harvested crops count
-        seedInventory["Corn"] =0;
+        seedInventory["Corn"] = 0;
+        cropInventory["Corn"] = 0;
     }
 
     public void ResetGame()
