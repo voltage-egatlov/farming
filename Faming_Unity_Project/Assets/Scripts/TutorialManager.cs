@@ -82,7 +82,7 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case 7:
-                messageText.text = "Tutorial complete! Good luck on Farming";
+                messageText.text = "Tutorial complete! Good luck on Farming!";
                 nextButton.gameObject.SetActive(true);
                 break;
 
