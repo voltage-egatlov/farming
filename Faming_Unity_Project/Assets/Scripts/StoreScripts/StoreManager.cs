@@ -7,7 +7,7 @@ using TMPro;
 public class StoreManager : MonoBehaviour
 {
     public static StoreManager Instance;
-
+    public TextMeshProUGUI seedsWarningText;
     public Tractor_Handler tractorHandler;
 
     public GameObject storeContainer;
@@ -89,14 +89,37 @@ public class StoreManager : MonoBehaviour
         tractorPanel.SetActive(false);
         seedsPanel.SetActive(true);
         futurePanel.SetActive(false);
+
+        // Clear previous warning
+        if (seedsWarningText != null)
+            seedsWarningText.text = "";
+    }
+
+    public void OnSeedsNext()
+    {
+        // Sum up all your seed types. Adjust names to match what you used in GameManager.
+        int totalSeeds = GameManager.Instance.GetSeedCount("Corn");
+
+        if (totalSeeds <= 0)
+        {
+            // Show warning
+            if (seedsWarningText != null)
+                seedsWarningText.text = "Please buy at least one seed before continuing.";
+            Debug.Log("Cannot proceed: no seeds purchased.");
+            return;
+        }
+        
+        ShowFuturePanel();
     }
 
     public void ShowFuturePanel()
     {
+        seedsWarningText.text = "";
         tractorPanel.SetActive(false);
         seedsPanel.SetActive(false);
         futurePanel.SetActive(true);
     }
+
 
     public void ActivateLandView()
     {
