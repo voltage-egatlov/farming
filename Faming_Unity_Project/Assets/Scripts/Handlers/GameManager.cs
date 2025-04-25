@@ -7,6 +7,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+public TextMeshProUGUI phase2TimerText;
 
     public TextMeshProUGUI bankBalanceText; // Reference to the UI Text element for displaying the bank balance
     public TextMeshProUGUI phaseText; // Reference to the UI Text element for displaying the current phase
@@ -126,6 +127,36 @@ public class GameManager : MonoBehaviour
             Debug.Log("Not enough " + seedType + " seeds in inventory.");
             return false;
         }
+    }
+
+    public void StartPhase2Timer()
+    {
+        StartCoroutine(Phase2TimerRoutine());
+    }
+
+    private IEnumerator Phase2TimerRoutine()
+    {
+        float timeRemaining = 120f;  // seconds
+
+        while (timeRemaining > 0f)
+        {
+            // Format MM:SS
+            int minutes = Mathf.FloorToInt(timeRemaining / 60f);
+            int seconds = Mathf.FloorToInt(timeRemaining % 60f);
+            if (phase2TimerText != null)
+                phase2TimerText.text = $"Time left: {minutes:00}:{seconds:00}";
+
+            yield return new WaitForSeconds(1f);
+            timeRemaining -= 1f;
+        }
+
+        // Countdown is done → transition to Phase 3
+        currentPhase = Phase.Phase3;
+        Debug.Log("Phase 2 timer expired → now Phase 3");
+
+        // Clear the timer display
+        if (phase2TimerText != null)
+            phase2TimerText.text = "";
     }
 
 

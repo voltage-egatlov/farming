@@ -71,6 +71,8 @@ public class StoreManager : MonoBehaviour
             GameManager.Instance.currentPhase = GameManager.Phase.Phase2;
             Debug.Log("Transitioned to Phase 2: Farming mode.");
         }
+        
+        GameManager.Instance.StartPhase2Timer();
 
         SwitchToMainCam();
     }
