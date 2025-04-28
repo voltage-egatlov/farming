@@ -35,4 +35,17 @@ public class TornadoMovement : MonoBehaviour
         // Y can remain the same for a horizontal movement effect (or adjust if you want vertical variation).
         targetPosition = initialPosition + new Vector3(randomX, 0, randomZ);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Tractor"))
+        {
+            Tractor_Handler tractor = other.GetComponent<Tractor_Handler>();
+            if (tractor != null)
+            {
+                Debug.Log("Collided with tractor, downgrading...");
+                tractor.Downgrade();
+            }
+        }
+    }
 }

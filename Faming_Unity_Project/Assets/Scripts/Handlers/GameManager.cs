@@ -162,7 +162,7 @@ public TextMeshProUGUI phase2TimerText;
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Official_Level1"); // Modified: Redirect to Level 1 scene
+        SceneManager.LoadScene("Nina_Scene3"); // Modified: Redirect to Level 1 scene
     }
     
     // Return to MainMenu

@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Tractor_Handler : MonoBehaviour
 {
     public GameObject IconGroup;
+    
+    // For changing model of tractor
+    public GameObject[] TractorModels; // Three models total
+    private int currentTractorStage = 0;
 
     public Rigidbody tractorRigidbody;
     public float forwardSpeed = 5f;
@@ -30,6 +35,9 @@ public class Tractor_Handler : MonoBehaviour
     {
         if (tractorRigidbody == null)
             tractorRigidbody = GetComponent<Rigidbody>();
+
+        // Set initial tractor to best model
+        SetModel(0);
     }
 
     void Update()
@@ -187,4 +195,38 @@ public class Tractor_Handler : MonoBehaviour
 
         box.currentState = PlantingBoxScript.BoxState.Empty;
     }
+
+    // Downgrade the tractor by changing its physical model
+    public void Downgrade()
+    {   
+        Debug.Log("Downgrade triggered! Current stage: " + currentTractorStage);
+
+        currentTractorStage++;
+
+        if (currentTractorStage < TractorModels.Length)
+        {
+            SetModel(currentTractorStage);
+        }
+        else
+        {
+            // Otherwise, game over
+            Debug.Log($"No more tractor models left! GAME OVER.");
+            SceneManager.LoadScene("GameOver");
+        }
+    }
+
+    // Set models of the tractor
+    void SetModel(int index)
+    {
+        for (int i = 0; i < TractorModels.Length; i++)
+        {
+            TractorModels[i].SetActive(i == index);
+            // currentModel = TractorModels[i];
+            // FrontRightWheel = currentModel.transform.Find("FrontRightWheel");
+            // FrontLeftWheel = currentModel.transform.Find("FrontLeftWheel");
+            // BackRightWheel = currentModel.transform.Find("BackRightWheel");
+            // BackLeftWheel = currentModel.transform.Find("BackLeftWheel");
+        }
+    }
 }
+
