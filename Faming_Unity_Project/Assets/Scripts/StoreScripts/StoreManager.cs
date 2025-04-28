@@ -25,6 +25,8 @@ public class StoreManager : MonoBehaviour
     public Camera mainCam;
     public Camera landCam;
 
+    public GameObject[] objectsToHide;
+
     void Awake()
     {
         if (Instance == null)
@@ -42,7 +44,14 @@ public class StoreManager : MonoBehaviour
         }
 
         Debug.Log("Opening store...");
-        // (Your existing OpenStore code)
+
+        // HIDE objects when opening the store
+        foreach (GameObject obj in objectsToHide)
+        {
+            if (obj != null)
+                obj.SetActive(false);
+        }
+
         if (mapPanel != null)
             mapPanel.SetActive(true);
         if (purchaseButtonsPanel != null)
@@ -56,16 +65,20 @@ public class StoreManager : MonoBehaviour
     }
 
 
-
     public void CloseStore()
     {
         storeContainer.SetActive(false);
 
-        // Optional: hide close button when closing store
+        // SHOW objects when closing the store
+        foreach (GameObject obj in objectsToHide)
+        {
+            if (obj != null)
+                obj.SetActive(true);
+        }
+
         if (closeButton != null)
             closeButton.SetActive(false);
 
-        // Transition to Phase 2 if currently in Phase 1
         if (GameManager.Instance.currentPhase == GameManager.Phase.Phase1)
         {
             GameManager.Instance.currentPhase = GameManager.Phase.Phase2;
@@ -76,6 +89,7 @@ public class StoreManager : MonoBehaviour
 
         SwitchToMainCam();
     }
+
 
 
 
