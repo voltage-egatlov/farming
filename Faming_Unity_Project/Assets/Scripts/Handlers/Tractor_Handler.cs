@@ -9,7 +9,7 @@ public class Tractor_Handler : MonoBehaviour
     
     // For changing model of tractor
     public GameObject[] TractorModels; // Three models total
-    private int currentTractorStage = 0;
+    public int currentTractorStage = 0;
 
     public Rigidbody tractorRigidbody;
     public float forwardSpeed = 5f;
