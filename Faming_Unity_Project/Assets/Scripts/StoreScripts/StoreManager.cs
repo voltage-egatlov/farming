@@ -27,6 +27,10 @@ public class StoreManager : MonoBehaviour
 
     public GameObject[] objectsToHide;
 
+    public GameObject mainPanel; 
+
+
+
     void Awake()
     {
         if (Instance == null)
@@ -61,7 +65,8 @@ public class StoreManager : MonoBehaviour
 
         SwitchToMainCam(); // Always start from main camera
         storeContainer.SetActive(true);
-        ShowTractorPanel(); // Start on the Tractor panel
+        ShowMainPanel(); // Start on the MAIN panel
+
     }
 
 
@@ -69,7 +74,10 @@ public class StoreManager : MonoBehaviour
     {
         storeContainer.SetActive(false);
 
-        // SHOW objects when closing the store
+        // Hide all store panels!
+        HideAllPanels();  // <--- ADD THIS
+
+        // Show background objects again
         foreach (GameObject obj in objectsToHide)
         {
             if (obj != null)
@@ -90,11 +98,50 @@ public class StoreManager : MonoBehaviour
         SwitchToMainCam();
     }
 
+    private void HideAllPanels()
+    {
+        if (mainPanel != null)
+            mainPanel.SetActive(false);
+        if (tractorPanel != null)
+            tractorPanel.SetActive(false);
+        if (seedsPanel != null)
+            seedsPanel.SetActive(false);
+        if (futurePanel != null)
+            futurePanel.SetActive(false);
+            
+    }
 
+    public void CloseToMainPanel()
+    {
+        Debug.Log("Returning to Main Panel inside Store...");
+        if (purchaseButtonsPanel != null)
+            purchaseButtonsPanel.SetActive(false);
+
+        HideAllPanels();   // Hide tractor, seeds, future, etc.
+        ShowMainPanel();   // Then show the main panel
+    }
+
+    public void ShowMainPanel()
+    {
+        if (mainPanel != null)
+            mainPanel.SetActive(true);
+
+        if (tractorPanel != null)
+            tractorPanel.SetActive(false);
+        
+        if (seedsPanel != null)
+            seedsPanel.SetActive(false);
+        
+        if (futurePanel != null)
+            futurePanel.SetActive(false);
+    }
 
 
     public void ShowTractorPanel()
     {
+        if (mainPanel != null)
+            mainPanel.SetActive(false);  // <-- Hide the main panel
+
         tractorPanel.SetActive(true);
         seedsPanel.SetActive(false);
         futurePanel.SetActive(false);
@@ -102,6 +149,8 @@ public class StoreManager : MonoBehaviour
 
     public void ShowSeedsPanel()
     {
+        if (mainPanel != null)
+            mainPanel.SetActive(false);  // <-- Hide the main panel
         tractorPanel.SetActive(false);
         seedsPanel.SetActive(true);
         futurePanel.SetActive(false);
@@ -130,6 +179,8 @@ public class StoreManager : MonoBehaviour
 
     public void ShowFuturePanel()
     {
+        if (mainPanel != null)
+            mainPanel.SetActive(false);  // <-- Hide the main panel
         seedsWarningText.text = "";
         tractorPanel.SetActive(false);
         seedsPanel.SetActive(false);
@@ -139,6 +190,8 @@ public class StoreManager : MonoBehaviour
 
     public void ActivateLandView()
     {
+        if (mainPanel != null)
+            mainPanel.SetActive(false);  // <-- Hide the main panel
         Debug.Log("Switching to LandCam, hiding entire MapPanel, showing purchase buttons");
 
         // Disable the entire MapPanel
