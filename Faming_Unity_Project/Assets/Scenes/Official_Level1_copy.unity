@@ -4008,7 +4008,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &808481354
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8831,6 +8831,8 @@ MonoBehaviour:
   lookSpeed: 5
   minPitch: -30
   maxPitch: 60
+  bobFrequency: 40
+  bobAmplitude: 0.15
 --- !u!81 &1787455162
 AudioListener:
   m_ObjectHideFlags: 0
