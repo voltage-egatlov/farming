@@ -114,12 +114,17 @@ public class StoreManager : MonoBehaviour
     public void CloseToMainPanel()
     {
         Debug.Log("Returning to Main Panel inside Store...");
+        
+        // Switch camera back to main!
+        SwitchToMainCam();
+
         if (purchaseButtonsPanel != null)
             purchaseButtonsPanel.SetActive(false);
 
         HideAllPanels();   // Hide tractor, seeds, future, etc.
         ShowMainPanel();   // Then show the main panel
     }
+
 
     public void ShowMainPanel()
     {
