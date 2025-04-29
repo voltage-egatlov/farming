@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1.310837, g: 1.0480949, b: 0.746335, a: 1}
+  m_IndirectSpecularColor: {r: 0.91866225, g: 0.7938933, b: 0.6033489, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8831,8 +8831,8 @@ MonoBehaviour:
   lookSpeed: 5
   minPitch: -30
   maxPitch: 60
-  bobFrequency: 40
-  bobAmplitude: 0.15
+  bobFrequency: 20
+  bobAmplitude: 0.1
 --- !u!81 &1787455162
 AudioListener:
   m_ObjectHideFlags: 0
