@@ -45,7 +45,6 @@ public class TutorialManager : MonoBehaviour
     void AdvanceStep()
     {
         step++;
-        // hide Next until we decide it’s needed
         nextButton.gameObject.SetActive(false);
 
         switch (step)
@@ -82,6 +81,16 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             case 7:
+                messageText.text = "Watch out for the tornado season! If the tornado hits you, your tractor will downgrade one level.";
+                nextButton.gameObject.SetActive(true);
+                break;
+
+            case 8:
+                messageText.text = "A second tornado hit will strip you back to the base model, so stay clear of those twisters!";
+                nextButton.gameObject.SetActive(true);
+                break;
+
+            case 9:
                 messageText.text = "Tutorial complete! Good luck on Farming!";
                 nextButton.gameObject.SetActive(true);
                 break;
