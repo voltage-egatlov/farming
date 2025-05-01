@@ -4456,7 +4456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b66dc83a483164db1a4e67818b4653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phase2TimerText: {fileID: 0}
+  phase2TimerText: {fileID: 1371588046}
   bankBalanceText: {fileID: 2135600849}
   phaseText: {fileID: 1088436868}
   bankBalance: 1000
@@ -7209,6 +7209,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 15102402038588279, guid: 695a9652c5e42664e955edb74243e024, type: 3}
   m_PrefabInstance: {fileID: 157601275}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1371588046 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2455238738646704890, guid: 695a9652c5e42664e955edb74243e024, type: 3}
+  m_PrefabInstance: {fileID: 157601275}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371588044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1440105957
 GameObject:
   m_ObjectHideFlags: 0

@@ -94,6 +94,7 @@ public class StoreManager : MonoBehaviour
         }
         
         GameManager.Instance.StartPhase2Timer();
+        Debug.Log("TimeStartSent");
 
         SwitchToMainCam();
     }

@@ -7,7 +7,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-public TextMeshProUGUI phase2TimerText;
+    public TextMeshProUGUI phase2TimerText;
 
     public TextMeshProUGUI bankBalanceText; // Reference to the UI Text element for displaying the bank balance
     public TextMeshProUGUI phaseText; // Reference to the UI Text element for displaying the current phase
@@ -131,11 +131,14 @@ public TextMeshProUGUI phase2TimerText;
 
     public void StartPhase2Timer()
     {
+        Debug.Log("TimeStartRecieved");
         StartCoroutine(Phase2TimerRoutine());
     }
 
     private IEnumerator Phase2TimerRoutine()
     {
+        
+        Debug.Log("TimeStarting");
         float timeRemaining = 120f;  // seconds
 
         while (timeRemaining > 0f)
