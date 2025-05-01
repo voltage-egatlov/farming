@@ -4,16 +4,10 @@ using TMPro;
 
 public class InventoryManager_NEW : MonoBehaviour
 {
-    public GameObject inventoryPanel; // Drag your panel's RectTransform here
+    public GameObject inventoryPanel; 
     public TMP_Text balanceText;
-
-    public TMP_Text tomatoSeedText;
-    public TMP_Text carrotSeedText;
-    public TMP_Text cornSeedText;
-    public TMP_Text cabbageSeedText;
-    public TMP_Text wheatSeedText;
-
-    public TMP_Text cornCropText;
+    public TMP_Text seedsText;
+    public TMP_Text cropsText;
 
     private bool isOpen = false;
 
@@ -34,8 +28,8 @@ public class InventoryManager_NEW : MonoBehaviour
     private void UpdateInventoryDisplay()
     {
         balanceText.text = "Balance: $" + GameManager.Instance.GetCurrentBalance();
-        cornSeedText.text = "Corn Seeds: " + GameManager.Instance.GetSeedCount("Corn");
-        cornCropText.text = "Corn: " + GameManager.Instance.GetCropCount("Corn");
+        seedsText.text = "Seeds: " + GameManager.Instance.GetSeedCount("Corn");
+        cropsText.text = "Crops: " + GameManager.Instance.GetCropCount("Corn");
     }
 
     void Update()
