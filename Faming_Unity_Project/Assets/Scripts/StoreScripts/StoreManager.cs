@@ -154,17 +154,13 @@ public class StoreManager : MonoBehaviour
 
     public void ShowSeedsPanel()
     {
-        if (mainPanel != null)
-            mainPanel.SetActive(false);  // <-- Hide the main panel
         tractorPanel.SetActive(false);
         seedsPanel.SetActive(true);
         futurePanel.SetActive(false);
 
-        // Clear previous warning
         if (seedsWarningText != null)
             seedsWarningText.text = "";
     }
-
     public void OnSeedsNext()
     {
         // Sum up all your seed types. Adjust names to match what you used in GameManager.
@@ -172,9 +168,9 @@ public class StoreManager : MonoBehaviour
 
         if (totalSeeds <= 0)
         {
-            // Show warning
-            if (seedsWarningText != null)
-                seedsWarningText.text = "Please buy at least one seed before continuing.";
+            seedsWarningText.gameObject.SetActive(true);
+            seedsWarningText.text = "Please buy at least one seed before continuing.";
+
             Debug.Log("Cannot proceed: no seeds purchased.");
             return;
         }

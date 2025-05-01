@@ -1270,6 +1270,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6647451215050687401, guid: 695a9652c5e42664e955edb74243e024, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -117
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435570993281349366, guid: 695a9652c5e42664e955edb74243e024, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8013276429298740912, guid: 695a9652c5e42664e955edb74243e024, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3168,7 +3180,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 370954994}
         m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
-        m_MethodName: ShowFuturePanel
+        m_MethodName: OnSeedsNext
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
