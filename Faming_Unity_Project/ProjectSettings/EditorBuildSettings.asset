@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/yoyo.unity
     guid: 8f0c06eaf56cd41209df37ec88437bc2
+  - enabled: 1
+    path: Assets/Scenes 1/WinScene.unity
+    guid: f54316a59523b0144aeb42daeef65b56
   m_configObjects: {}

@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public TextMeshProUGUI phase2TimerText;
-
+    public int targetBalance = 5000; 
     public TextMeshProUGUI bankBalanceText; // Reference to the UI Text element for displaying the bank balance
     public TextMeshProUGUI phaseText; // Reference to the UI Text element for displaying the current phase
     
@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
     public void AddFunds(int amount)
     {
         bankBalance += amount;
+        CheckWinCondition();
     }
     
     public bool DeductFunds(int amount)
@@ -187,5 +188,14 @@ public class GameManager : MonoBehaviour
         #else
         Application.Quit();
         #endif
+    }
+
+    private void CheckWinCondition()
+    {
+        if (bankBalance >= targetBalance)
+        {
+            Debug.Log($"Win condition met! Balance {bankBalance} ≥ {targetBalance}. Loading WinScene.");
+            SceneManager.LoadScene("WinScene");
+        }
     }
 }
