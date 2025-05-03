@@ -42,37 +42,50 @@ public class Tractor_Handler : MonoBehaviour
 
     void Update()
     {
-        // Handle driving input...
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput   = Input.GetAxis("Vertical");
+        // Handle flying off
+        bool isGround = false;
+        Ray ray = new Ray(transform.position + Vector3.up * 0.1f, Vector3.down);
+        RaycastHit hit;
 
-        if (verticalInput > 0)
+        if (Physics.Raycast(ray, out hit, 3f))
         {
-            tractorRigidbody.velocity = Vector3.Lerp(
-                tractorRigidbody.velocity,
-                transform.forward * verticalInput * forwardSpeed,
-                Time.deltaTime * 10f
-            );
-            if (horizontalInput != 0)
-                tractorRigidbody.angularVelocity = new Vector3(0, horizontalInput * forwardTurnSpeed, 0);
-        }
-        else if (verticalInput < 0)
-        {
-            tractorRigidbody.velocity = transform.forward * verticalInput * reverseSpeed;
-            if (horizontalInput != 0)
-                tractorRigidbody.angularVelocity = new Vector3(0, -horizontalInput * reverseTurnSpeed, 0);
-        }
-        else if (tractorRigidbody.velocity.magnitude > 0)
-        {
-            tractorRigidbody.velocity = Vector3.Lerp(
-                tractorRigidbody.velocity,
-                Vector3.zero,
-                Time.deltaTime * 100f
-            );
+            isGround = true;
         }
 
-        if (horizontalInput == 0 && verticalInput == 0)
-            tractorRigidbody.angularVelocity = Vector3.zero;
+        if (isGround)
+        {
+            // Handle driving input...
+            horizontalInput = Input.GetAxis("Horizontal");
+            verticalInput   = Input.GetAxis("Vertical");
+
+            if (verticalInput > 0)
+            {
+                tractorRigidbody.velocity = Vector3.Lerp(
+                    tractorRigidbody.velocity,
+                    transform.forward * verticalInput * forwardSpeed,
+                    Time.deltaTime * 10f
+                );
+                if (horizontalInput != 0)
+                    tractorRigidbody.angularVelocity = new Vector3(0, horizontalInput * forwardTurnSpeed, 0);
+            }
+            else if (verticalInput < 0)
+            {
+                tractorRigidbody.velocity = transform.forward * verticalInput * reverseSpeed;
+                if (horizontalInput != 0)
+                    tractorRigidbody.angularVelocity = new Vector3(0, -horizontalInput * reverseTurnSpeed, 0);
+            }
+            else if (tractorRigidbody.velocity.magnitude > 0)
+            {
+                tractorRigidbody.velocity = Vector3.Lerp(
+                    tractorRigidbody.velocity,
+                    Vector3.zero,
+                    Time.deltaTime * 100f
+                );
+            }
+
+            if (horizontalInput == 0 && verticalInput == 0)
+                tractorRigidbody.angularVelocity = Vector3.zero;
+        }
 
         // Rotate wheels
         float wheelRot = tractorRigidbody.velocity.x * Time.deltaTime * rotateModifier;
