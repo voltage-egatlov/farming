@@ -31,18 +31,16 @@ public class Tractor_Handler : MonoBehaviour
     public enum currentEquippedItem { None, Seed, Fertilizer, Water }
     [SerializeField] public currentEquippedItem currentItem = currentEquippedItem.None;
 
-    private AudioSource tractorAudioSource;
+    public AudioSource tractorAudioSource;
+    public AudioSource explosionAudioSource;
+
+    public GameObject explosionVFX;
 
     void Start()
     {
         if (tractorRigidbody == null)
         { 
             tractorRigidbody = GetComponent<Rigidbody>();
-        }
-
-        if (tractorAudioSource == null)
-        {
-            tractorAudioSource = GetComponent<AudioSource>();
         }
 
         // Set initial tractor to best model
@@ -228,11 +226,15 @@ public class Tractor_Handler : MonoBehaviour
     public void Downgrade()
     {   
         Debug.Log("Downgrade triggered! Current stage: " + currentTractorStage);
+        // Plays explosion VFX and sound
+        Instantiate(explosionVFX, transform.position, Quaternion.identity);
+        explosionAudioSource.Play();
 
         currentTractorStage++;
 
         if (currentTractorStage < TractorModels.Length)
         {
+            // Switches model
             SetModel(currentTractorStage);
         }
         else

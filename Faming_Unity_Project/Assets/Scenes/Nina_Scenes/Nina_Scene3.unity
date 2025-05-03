@@ -2782,6 +2782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phase2TimerText: {fileID: 0}
+  targetBalance: 5000
   bankBalanceText: {fileID: 2135600849}
   phaseText: {fileID: 1088436868}
   bankBalance: 1000
@@ -6465,6 +6466,8 @@ MonoBehaviour:
   lookSpeed: 5
   minPitch: -30
   maxPitch: 60
+  bobFrequency: 3
+  bobAmplitude: 0.05
 --- !u!81 &1787455162
 AudioListener:
   m_ObjectHideFlags: 0
@@ -6858,6 +6861,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6969764166349841775, guid: 4c1f8efe66ea2a24287bbc9659da3251, type: 3}
+      propertyPath: explosionVFX
+      value: 
+      objectReference: {fileID: 1483611001071019707, guid: 9504c57f18a99934689bdcab0949bb5e, type: 3}
     - target: {fileID: 6969764166349841775, guid: 4c1f8efe66ea2a24287bbc9659da3251, type: 3}
       propertyPath: movementAreaSize.x
       value: 15
