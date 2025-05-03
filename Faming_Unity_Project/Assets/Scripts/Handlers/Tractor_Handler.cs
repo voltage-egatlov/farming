@@ -31,10 +31,19 @@ public class Tractor_Handler : MonoBehaviour
     public enum currentEquippedItem { None, Seed, Fertilizer, Water }
     [SerializeField] public currentEquippedItem currentItem = currentEquippedItem.None;
 
+    private AudioSource tractorAudioSource;
+
     void Start()
     {
         if (tractorRigidbody == null)
+        { 
             tractorRigidbody = GetComponent<Rigidbody>();
+        }
+
+        if (tractorAudioSource == null)
+        {
+            tractorAudioSource = GetComponent<AudioSource>();
+        }
 
         // Set initial tractor to best model
         SetModel(0);
@@ -67,12 +76,14 @@ public class Tractor_Handler : MonoBehaviour
                 );
                 if (horizontalInput != 0)
                     tractorRigidbody.angularVelocity = new Vector3(0, horizontalInput * forwardTurnSpeed, 0);
+                    PlayTractorAudio();
             }
             else if (verticalInput < 0)
             {
                 tractorRigidbody.velocity = transform.forward * verticalInput * reverseSpeed;
                 if (horizontalInput != 0)
                     tractorRigidbody.angularVelocity = new Vector3(0, -horizontalInput * reverseTurnSpeed, 0);
+                    PlayTractorAudio();
             }
             else if (tractorRigidbody.velocity.magnitude > 0)
             {
@@ -81,6 +92,10 @@ public class Tractor_Handler : MonoBehaviour
                     Vector3.zero,
                     Time.deltaTime * 100f
                 );
+                StopTractorAudio();
+            } else
+            {
+                StopTractorAudio();
             }
 
             if (horizontalInput == 0 && verticalInput == 0)
@@ -239,6 +254,24 @@ public class Tractor_Handler : MonoBehaviour
             // FrontLeftWheel = currentModel.transform.Find("FrontLeftWheel");
             // BackRightWheel = currentModel.transform.Find("BackRightWheel");
             // BackLeftWheel = currentModel.transform.Find("BackLeftWheel");
+        }
+    }
+
+    // Play tractor audio when moving
+    private void PlayTractorAudio()
+    {
+        if (!tractorAudioSource.isPlaying)
+        {
+            tractorAudioSource.Play();
+        }
+    }
+
+    // Stop tractor audio when not moving
+    private void StopTractorAudio()
+    {
+        if (tractorAudioSource.isPlaying)
+        {
+            tractorAudioSource.Stop();
         }
     }
 }

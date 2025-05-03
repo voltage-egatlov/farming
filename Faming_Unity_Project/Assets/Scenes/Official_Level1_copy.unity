@@ -4457,6 +4457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phase2TimerText: {fileID: 1371588046}
+  targetBalance: 5000
   bankBalanceText: {fileID: 2135600849}
   phaseText: {fileID: 1088436868}
   bankBalance: 1000
@@ -5968,6 +5969,11 @@ MonoBehaviour:
 --- !u!1 &1123724429 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3257523869681859166, guid: de08d3c4b01f39d4282d15bb29cf9786, type: 3}
+  m_PrefabInstance: {fileID: 1123724425}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1123724431 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5233296050809998804, guid: de08d3c4b01f39d4282d15bb29cf9786, type: 3}
   m_PrefabInstance: {fileID: 1123724425}
   m_PrefabAsset: {fileID: 0}
 --- !u!65 &1123724433
@@ -9423,7 +9429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb50be8d0fd20b49bb7613264e02c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tractor: {fileID: 0}
+  tractor: {fileID: 1123724431}
   height: 5
   distance: 10
   smoothSpeed: 0.125
