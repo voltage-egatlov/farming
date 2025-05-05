@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public int targetBalance = 5000; 
     public TextMeshProUGUI bankBalanceText; // Reference to the UI Text element for displaying the bank balance
     public TextMeshProUGUI phaseText; // Reference to the UI Text element for displaying the current phase
+    public GameObject Crop; // Reference to the crop prefab
     
     public int bankBalance = 1000;  // Starting funds
     public int harvestedCrops = 0; // Amount of crops harvested
@@ -156,6 +157,7 @@ public class GameManager : MonoBehaviour
 
         // Countdown is done → transition to Phase 3
         currentPhase = Phase.Phase3;
+        growCrops(); // Call the function to grow crops when the timer expires
         Debug.Log("Phase 2 timer expired → now Phase 3");
 
         // Clear the timer display
@@ -196,6 +198,48 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log($"Win condition met! Balance {bankBalance} ≥ {targetBalance}. Loading WinScene.");
             SceneManager.LoadScene("WinScene");
+        }
+    }
+
+    private void growCrops()
+    {
+        PlantingBoxScript[] plantingBoxes = FindObjectsOfType<PlantingBoxScript>();
+        foreach (PlantingBoxScript plantingBox in plantingBoxes)
+        {
+            if (plantingBox.currentState == PlantingBoxScript.BoxState.Watered)
+            {
+                clearPlot(plantingBox.gameObject);
+                float plantingWidth = plantingBox.transform.localScale.x; // Get the width of the planting box
+                float plantingLength = plantingBox.transform.localScale.z; // Get the length of the planting box
+
+                float numCropsWidth = Mathf.Round(plantingWidth*25); // Calculate the number of crops that can fit in the width of the planting box
+                float numCropsLength = Mathf.Round(plantingLength*25); // Calculate the number of crops that can fit in the length of the planting box
+
+                for (int i = 0; i < numCropsWidth; i++) // Loop through the width of the planting box
+                {
+                    for (int j = 0; j < numCropsLength; j++) // Loop through the length of the planting box
+                    {
+                        GameObject newCrop = Instantiate(Crop, new Vector3(0, 0, 0), Quaternion.identity, plantingBox.transform);
+                        newCrop.transform.localScale = new Vector3(.75f, 7.5f, .75f); // Set the scale of the crop object
+                        newCrop.transform.localPosition = new Vector3(-.5f + (i + .5f) * (1 / numCropsWidth), 0, -.5f + (j + .5f) * (1 / numCropsLength)); // Position the crop within the planting box
+
+                        plantingBox.currentState = PlantingBoxScript.BoxState.Ready; // Change the state of the planting box to Empty
+                    }
+                }
+            }
+            if(plantingBox.currentState!= PlantingBoxScript.BoxState.Empty && plantingBox.currentState!= PlantingBoxScript.BoxState.Ready)
+            {
+                clearPlot(plantingBox.gameObject); // Clear the planting box of any existing crops
+                plantingBox.currentState = PlantingBoxScript.BoxState.Empty; // Change the state of the planting box to Empty
+            }
+        }
+    }
+
+    private void clearPlot(GameObject plot) // Function to clear the children of a planting box
+    {
+        for(int i = plot.transform.childCount - 1; i >= 2; i--)
+        {
+            Destroy(plot.transform.GetChild(i).gameObject); // Destroy each child object of the planting box
         }
     }
 }
