@@ -157,6 +157,9 @@ public class GameManager : MonoBehaviour
 
         // Countdown is done → transition to Phase 3
         currentPhase = Phase.Phase3;
+        // After setting currentPhase = Phase.Phase3:
+        TornadoManager.Instance.StartTornadoEvent();
+
         growCrops(); // Call the function to grow crops when the timer expires
         Debug.Log("Phase 2 timer expired → now Phase 3");
 

@@ -4429,6 +4429,7 @@ MonoBehaviour:
   targetBalance: 1100
   bankBalanceText: {fileID: 2135600849}
   phaseText: {fileID: 1088436868}
+  Crop: {fileID: 1856118134373080824, guid: 5f6564b582e40974e84efcc7c4918d95, type: 3}
   bankBalance: 1000
   harvestedCrops: 0
   currentPhase: 0
