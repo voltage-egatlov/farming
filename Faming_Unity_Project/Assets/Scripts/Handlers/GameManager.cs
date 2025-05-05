@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour
     {
         
         Debug.Log("TimeStarting");
-        float timeRemaining = 120f;  // seconds
+        float timeRemaining = 30f;  // seconds
 
         while (timeRemaining > 0f)
         {

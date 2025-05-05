@@ -12,6 +12,7 @@ TagManager:
   - FertilizerStorage
   - Crop
   - Tornado
+  - GrownCrop
   layers:
   - Default
   - TransparentFX
