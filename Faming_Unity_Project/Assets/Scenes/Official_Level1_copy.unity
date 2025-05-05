@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.91868746, g: 0.79389906, b: 0.60288924, a: 1}
+  m_IndirectSpecularColor: {r: 0.91872203, g: 0.79392606, b: 0.6028711, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1530,6 +1530,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159363940}
   m_CullTransparentMesh: 1
+--- !u!1 &167874980 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4224344209392830465, guid: 695a9652c5e42664e955edb74243e024, type: 3}
+  m_PrefabInstance: {fileID: 157601275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &191610524
 GameObject:
   m_ObjectHideFlags: 0
@@ -5154,6 +5159,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 866879421}
   m_CullTransparentMesh: 1
+--- !u!114 &879922197 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3866116654805077967, guid: 695a9652c5e42664e955edb74243e024, type: 3}
+  m_PrefabInstance: {fileID: 157601275}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &901370855
 GameObject:
   m_ObjectHideFlags: 0
@@ -5518,10 +5534,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d118a79da841d489a57316009cf929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCam: {fileID: 0}
-  TornadoCam: {fileID: 0}
-  isTornadoExisting: 0
-  shakeMagnitude: 0.1
 --- !u!81 &947714912
 AudioListener:
   m_ObjectHideFlags: 0
@@ -8264,6 +8276,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1440216891 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8581510721692930395, guid: 695a9652c5e42664e955edb74243e024, type: 3}
+  m_PrefabInstance: {fileID: 157601275}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1443979988
 GameObject:
   m_ObjectHideFlags: 0
@@ -10664,11 +10687,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 097c5c3ebddcf73449bacffa5b0e3982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tornadoPrefab: {fileID: 0}
-  tornadoSpawnPoint: {fileID: 0}
-  minInterval: 120
-  maxInterval: 300
-  tornadoDuration: 100
 --- !u!4 &1804192724
 Transform:
   m_ObjectHideFlags: 0
@@ -13220,11 +13238,11 @@ PrefabInstance:
     - target: {fileID: 5701313982822510241, guid: 4b073c6b94048b34284a090928086ec5, type: 3}
       propertyPath: cropsText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1440216891}
     - target: {fileID: 5701313982822510241, guid: 4b073c6b94048b34284a090928086ec5, type: 3}
       propertyPath: seedsText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 879922197}
     - target: {fileID: 5701313982822510241, guid: 4b073c6b94048b34284a090928086ec5, type: 3}
       propertyPath: balanceText
       value: 
@@ -13240,7 +13258,7 @@ PrefabInstance:
     - target: {fileID: 5701313982822510241, guid: 4b073c6b94048b34284a090928086ec5, type: 3}
       propertyPath: inventoryPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 167874980}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
