@@ -50,48 +50,66 @@ public class TutorialManager : MonoBehaviour
         switch (step)
         {
             case 1:
-                messageText.text = "Welcome to FARMING! Let’s get started.";
-                // manual “click Next” step:
+                messageText.text =
+                    "Dear Child,\n\n" +
+                    "I know this land has seen better days, and I can’t face those Texas tornadoes anymore. " +
+                    "I’m leaving everything to you. Follow these instructions carefully and you’ll make enough selling crops to keep things afloat.\n\n";
                 nextButton.gameObject.SetActive(true);
                 break;
 
             case 2:
-                messageText.text = "Drive your tractor up to the store entrance to open the Store menu.";
+                messageText.text =
+                    "First, hop into your trusty tractor and drive up to the Store entrance to open the Store menu.\n\n";
                 nextButton.gameObject.SetActive(true);
                 break;
 
             case 3:
-                messageText.text = "Inside the Store, you can upgrade your tractor, buy crop seeds, or purchase new land.";
+                messageText.text =
+                    "Inside the Store you can:\n" +
+                    "  • Upgrade your tractor’s speed\n" +
+                    "  • Buy crop seeds\n" +
+                    "  • Purchase new plots of land\n\n" +
+                    "Choose wisely.";
                 nextButton.gameObject.SetActive(true);
                 break;
 
             case 4:
-                messageText.text = "First, upgrade your tractor to boost its speed—but don’t spend all your money at once.";
+                messageText.text =
+                    "Let’s start by giving your tractor a speed boost.Each upgrade costs $200, don’t spend your whole budget at once.\n\n";
                 nextButton.gameObject.SetActive(true);
                 break;
 
             case 5:
-                messageText.text = "Next, purchase a plot of land. Then head to your new field to begin planting.";
+                messageText.text =
+                    "Now, still in the Store, select the Seeds tab and purchase a bag of crop seeds for $150.\n\n" +
+                    "That will cover one plot.";
                 nextButton.gameObject.SetActive(true);
                 break;
 
+
             case 6:
-                messageText.text = "Press '1' on your keyboard to equip your seeds, then drive onto the field to plant them.";
+                messageText.text =
+                    "Next, buy your first plot of land. Once you’ve got it, head out to the field and get ready to plant.\n\n";
                 nextButton.gameObject.SetActive(true);
                 break;
 
             case 7:
-                messageText.text = "Watch out for the tornado season! If the tornado hits you, your tractor will downgrade one level.";
+                messageText.text =
+                    "Tornado season is brutal. If one catches you off guard, your tractor will downgrade one level.\n\n";
                 nextButton.gameObject.SetActive(true);
                 break;
 
             case 8:
-                messageText.text = "A second tornado hit will strip you back to the base model, so stay clear of those twisters!";
+                messageText.text =
+                    "A second tornado strike will strip you back to the base model, don’t let that happen.\n\n";
                 nextButton.gameObject.SetActive(true);
                 break;
 
             case 9:
-                messageText.text = "Tutorial complete! Good luck on Farming!";
+                messageText.text =
+                    "That’s all I’ve got for now. Follow these steps, dodge the twisters, and turn a profit. " +
+                    "Make me proud out there.\n\n" +
+                    "Sincerely,\nDad";
                 nextButton.gameObject.SetActive(true);
                 break;
 
