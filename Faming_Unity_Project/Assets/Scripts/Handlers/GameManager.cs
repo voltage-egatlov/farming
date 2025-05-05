@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
     public GameObject Crop; // Reference to the crop prefab
     
     public int bankBalance = 1000;  // Starting funds
-    public int harvestedCrops = 0; // Amount of crops harvested
-
+    public int currentCropPrice = 0; // Current price of the crop
+    
     public enum Phase
     {
         Phase1,  // Store available; no farming yet
@@ -114,6 +114,14 @@ public class GameManager : MonoBehaviour
         return 0;
     }
 
+    public int GetCropPrice()
+    {
+        // Example logic for crop price; can be modified as needed
+        return Random.Range(20, 50); // Random price between 10 and 50
+    }
+
+
+
     public bool UseSeed(string seedType, int quantity = 1)
     {
         // Check if enough seeds exist
@@ -129,6 +137,15 @@ public class GameManager : MonoBehaviour
             Debug.Log("Not enough " + seedType + " seeds in inventory.");
             return false;
         }
+    }
+
+    public void sellCrops()
+    {
+        // Example logic for selling crops; can be modified as needed
+        int earnings = GetCropCount("Corn") * currentCropPrice; // Assuming "Corn" is the crop type
+        AddFunds(earnings); // Add earnings to bank balance
+
+        seedInventory["Corn"] = 0; // Reset crop count after selling
     }
 
     public void StartPhase2Timer()
@@ -209,7 +226,7 @@ public class GameManager : MonoBehaviour
         PlantingBoxScript[] plantingBoxes = FindObjectsOfType<PlantingBoxScript>();
         foreach (PlantingBoxScript plantingBox in plantingBoxes)
         {
-            if (plantingBox.currentState == PlantingBoxScript.BoxState.Watered)
+            if (plantingBox.currentState == BoxState.Watered)
             {
                 clearPlot(plantingBox.gameObject);
                 float plantingWidth = plantingBox.transform.localScale.x; // Get the width of the planting box
@@ -226,14 +243,14 @@ public class GameManager : MonoBehaviour
                         newCrop.transform.localScale = new Vector3(.75f, 7.5f, .75f); // Set the scale of the crop object
                         newCrop.transform.localPosition = new Vector3(-.5f + (i + .5f) * (1 / numCropsWidth), 0, -.5f + (j + .5f) * (1 / numCropsLength)); // Position the crop within the planting box
 
-                        plantingBox.currentState = PlantingBoxScript.BoxState.Ready; // Change the state of the planting box to Empty
+                        plantingBox.currentState = BoxState.Ready; // Change the state of the planting box to Empty
                     }
                 }
             }
-            if(plantingBox.currentState!= PlantingBoxScript.BoxState.Empty && plantingBox.currentState!= PlantingBoxScript.BoxState.Ready)
+            if(plantingBox.currentState!= BoxState.Empty && plantingBox.currentState!= BoxState.Ready)
             {
                 clearPlot(plantingBox.gameObject); // Clear the planting box of any existing crops
-                plantingBox.currentState = PlantingBoxScript.BoxState.Empty; // Change the state of the planting box to Empty
+                plantingBox.currentState = BoxState.Empty; // Change the state of the planting box to Empty
             }
         }
     }

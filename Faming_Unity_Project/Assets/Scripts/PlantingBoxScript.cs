@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum BoxState
+{
+    Empty,
+    Planted,
+    Watered,
+    Fertilized,
+    Ready
+}
+
 public class PlantingBoxScript : MonoBehaviour
 {
     public GameObject PlantingVisual; // Reference to the planting visual object
     private Renderer canSee; // Renderer component of the planting visual object
-    private GameObject floatingText; // Floating text object to show the current state of the planting box
-    private TextMesh floatingTextMesh; // Cached TextMesh component
-
-    public enum BoxState
-    {
-        Empty,
-        Planted,
-        Watered,
-        Fertilized,
-        Ready
-    }
+    public GameObject IconsPrefab;
+    private GameObject floatingIcons; // Instance of the icons prefab
 
     [SerializeField]
     public BoxState currentState = BoxState.Empty;
@@ -30,19 +30,10 @@ public class PlantingBoxScript : MonoBehaviour
         // Get the Renderer if available
         canSee = PlantingVisual.GetComponent<Renderer>();
 
-        // Create floating text
-        floatingText = new GameObject("FloatingText");
-        floatingTextMesh = floatingText.AddComponent<TextMesh>();
-
-        // Set text and appearance
-        floatingTextMesh.text = currentState.ToString();
-        floatingTextMesh.fontSize = 12;
-        floatingTextMesh.color = Color.white;
-        floatingTextMesh.anchor = TextAnchor.MiddleCenter;
-
-        // Position above box
-        floatingText.transform.SetParent(PlantingVisual.transform);
-        floatingText.transform.localPosition = new Vector3(0, 3, 0);
+        floatingIcons = Instantiate(IconsPrefab, transform.position, Quaternion.identity);
+        floatingIcons.transform.SetParent(transform); // Set as child of the planting box
+        floatingIcons.transform.localPosition = new Vector3(0, 2f, 0); // Adjust height as needed
+        floatingIcons.GetComponent<PlantingIconsOverAreaScript>().currentBoxState = currentState;
 
         // Hide visual until triggered
         if (canSee != null)
@@ -53,24 +44,28 @@ public class PlantingBoxScript : MonoBehaviour
 
     void Update()
     {
-        // Update state label
-        if (floatingTextMesh != null)
+        if (floatingIcons != null)
         {
-            floatingTextMesh.text = currentState.ToString();
-
-            // Make text face the main camera safely
-            if (Camera.main != null)
+            var iconsScript = floatingIcons.GetComponent<PlantingIconsOverAreaScript>();
+            if (iconsScript != null)
             {
-                floatingText.transform.LookAt(Camera.main.transform.position);
-                floatingText.transform.Rotate(0, 180, 0); // Flip the text
-                floatingText.transform.rotation = Quaternion.Euler(
-                    0,
-                    floatingText.transform.rotation.eulerAngles.y,
-                    0
-                );
+                iconsScript.currentBoxState = currentState;
             }
         }
+        // Make text face the main camera safely
+        if (Camera.main != null)
+        {
+            floatingIcons.transform.LookAt(Camera.main.transform.position);
+            floatingIcons.transform.Rotate(0, 180, 0); // Flip the text
+            floatingIcons.transform.rotation = Quaternion.Euler(
+                0,
+                floatingIcons.transform.rotation.eulerAngles.y,
+                0
+            );
+        }
+
     }
+
 
     void OnTriggerEnter(Collider other)
     {

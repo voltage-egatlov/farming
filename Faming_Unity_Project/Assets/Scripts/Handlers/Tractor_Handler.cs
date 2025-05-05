@@ -36,6 +36,8 @@ public class Tractor_Handler : MonoBehaviour
 
     public GameObject explosionVFX;
 
+    public bool canMove = true; // Flag to control tractor movement
+
     void Start()
     {
         if (tractorRigidbody == null)
@@ -138,7 +140,7 @@ public class Tractor_Handler : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 // Planting
-                if (box.currentState == PlantingBoxScript.BoxState.Empty
+                if (box.currentState == BoxState.Empty
                     && currentItem == currentEquippedItem.Seed)
                 {
                     const string seedType = "Corn";
@@ -168,19 +170,19 @@ public class Tractor_Handler : MonoBehaviour
                             );
                             newCrop.tag = "Crop";
                         }
-                    box.currentState = PlantingBoxScript.BoxState.Planted;
+                    box.currentState = BoxState.Planted;
                 }
                 // Fertilizing
-                else if (box.currentState == PlantingBoxScript.BoxState.Planted
+                else if (box.currentState == BoxState.Planted
                          && currentItem == currentEquippedItem.Fertilizer)
                 {
-                    box.currentState = PlantingBoxScript.BoxState.Fertilized;
+                    box.currentState = BoxState.Fertilized;
                 }
                 // Watering
-                else if (box.currentState == PlantingBoxScript.BoxState.Fertilized
+                else if (box.currentState == BoxState.Fertilized
                          && currentItem == currentEquippedItem.Water)
                 {
-                    box.currentState = PlantingBoxScript.BoxState.Watered;
+                    box.currentState = BoxState.Watered;
                 }
             }
             return;
@@ -189,7 +191,7 @@ public class Tractor_Handler : MonoBehaviour
         // PHASE 4: Manual Harvesting
         if (GameManager.Instance.currentPhase == GameManager.Phase.Phase4)
         {
-            if (box.currentState == PlantingBoxScript.BoxState.Ready
+            if (box.currentState == BoxState.Ready
                 && Input.GetKeyDown(KeyCode.Space))
             {
                 HarvestPlot(box);
@@ -219,7 +221,7 @@ public class Tractor_Handler : MonoBehaviour
             Debug.Log($"Harvested {harvestedCount} Corn into inventory.");
         }
 
-        box.currentState = PlantingBoxScript.BoxState.Empty;
+        box.currentState = BoxState.Empty;
     }
 
     // Downgrade the tractor by changing its physical model
