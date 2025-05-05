@@ -5851,6 +5851,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 253711763848859583, guid: de08d3c4b01f39d4282d15bb29cf9786, type: 3}
+      propertyPath: m_Constraints
+      value: 84
+      objectReference: {fileID: 0}
     - target: {fileID: 2228974318315221289, guid: de08d3c4b01f39d4282d15bb29cf9786, type: 3}
       propertyPath: m_Name
       value: BasicTractor
@@ -9537,7 +9541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 097c5c3ebddcf73449bacffa5b0e3982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tornadoPrefab: {fileID: 919132149155446097, guid: 3971c36db70c60943b80c882a0ac28d5, type: 3}
+  tornadoPrefab: {fileID: 4096359231499149526, guid: 4c1f8efe66ea2a24287bbc9659da3251, type: 3}
   tornadoSpawnPoint: {fileID: 239785904}
   minInterval: 2
   maxInterval: 5
