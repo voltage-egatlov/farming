@@ -48,10 +48,10 @@ public class GameManager : MonoBehaviour
                 phaseText.text = "Phase 2: Farming Open";
                 break;
             case Phase.Phase3:
-               phaseText.text = "Phase 3: Tornado Strikes!";
+               phaseText.text = "Phase 3: Harvest, but dont Get Hit!";
                break;
             case Phase.Phase4:
-                phaseText.text = "Phase 3: Time to Harvest";
+                phaseText.text = "Phase 4: Sell at Farmstand!";
                 break;
         }
         bankBalanceText.text = "$" + bankBalance.ToString();
@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour
         AddFunds(earnings); // Add earnings to bank balance
 
         seedInventory["Corn"] = 0; // Reset crop count after selling
+        cropInventory["Corn"] = 0; // Reset crop count after selling
     }
 
     public void StartPhase2Timer()

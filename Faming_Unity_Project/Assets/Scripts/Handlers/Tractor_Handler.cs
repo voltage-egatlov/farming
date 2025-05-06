@@ -189,7 +189,7 @@ public class Tractor_Handler : MonoBehaviour
         }
 
         // PHASE 4: Manual Harvesting
-        if (GameManager.Instance.currentPhase == GameManager.Phase.Phase4)
+        if (GameManager.Instance.currentPhase == GameManager.Phase.Phase3)
         {
             if (box.currentState == BoxState.Ready
                 && Input.GetKeyDown(KeyCode.Space))

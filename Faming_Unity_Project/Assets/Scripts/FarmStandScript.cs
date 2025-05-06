@@ -30,6 +30,7 @@ public class FarmStandScript : MonoBehaviour
         if(farmStandPanel.activeSelf)
         {
             tractor.gameObject.GetComponent<Tractor_Handler>().canMove = false; // Prevent tractor movement while farm stand is open
+            totalBankText.text = "Total Bank: $" + GameManager.Instance.GetCurrentBalance().ToString();
         }
         else
         {
@@ -81,7 +82,7 @@ public class FarmStandScript : MonoBehaviour
         // Reset the game to Phase 1
         GameManager.Instance.currentPhase = GameManager.Phase.Phase1;
 
-        tractor.transform.position = new Vector3(-37.5f, 1f, 115f); // Reset tractor position (example)
+        tractor.transform.position = new Vector3(-37.5f, 2.2f, 115f); // Reset tractor position (example)
         tractor.transform.rotation = Quaternion.Euler(0, 180f, 0); // Reset tractor rotation (example)
         CloseFarmStandPanel(); // Close the farm stand panel
     }

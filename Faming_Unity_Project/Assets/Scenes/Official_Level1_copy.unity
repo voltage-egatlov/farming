@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &23136313
 RectTransform:
   m_ObjectHideFlags: 0
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 383122558}
         m_TargetAssemblyTypeName: FarmStandScript, Assembly-CSharp
         m_MethodName: backToPhaseOne
         m_Mode: 1
@@ -749,7 +749,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &63252226 stripped
 MonoBehaviour:
@@ -2284,7 +2284,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &280773978
 GameObject:
@@ -2706,6 +2706,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &383122558 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3885236424689021164, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+  m_PrefabInstance: {fileID: 1171888873}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa5283e871943ba4a90f9223a513f0c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &403246012
 GameObject:
   m_ObjectHideFlags: 0
@@ -6057,7 +6068,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2327081163792857242, guid: 7268f093a7dd40847ab19767ff2aa63e, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 2327081163792857242, guid: 7268f093a7dd40847ab19767ff2aa63e, type: 3}
       propertyPath: m_LocalScale.x
@@ -6192,6 +6203,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034358845}
   m_CullTransparentMesh: 1
+--- !u!1 &1051496045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2228974318315221289, guid: de08d3c4b01f39d4282d15bb29cf9786, type: 3}
+  m_PrefabInstance: {fileID: 1123724425}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1079682769
 GameObject:
   m_ObjectHideFlags: 0
@@ -6409,6 +6425,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicTractor
       objectReference: {fileID: 0}
+    - target: {fileID: 2473643426985260208, guid: de08d3c4b01f39d4282d15bb29cf9786, type: 3}
+      propertyPath: m_TagString
+      value: TractorModel
+      objectReference: {fileID: 0}
     - target: {fileID: 2560625015904761184, guid: de08d3c4b01f39d4282d15bb29cf9786, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -6419,7 +6439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5233296050809998804, guid: de08d3c4b01f39d4282d15bb29cf9786, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 5233296050809998804, guid: de08d3c4b01f39d4282d15bb29cf9786, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6493,6 +6513,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 473.552
       objectReference: {fileID: 0}
+    - target: {fileID: 6916910599843444969, guid: de08d3c4b01f39d4282d15bb29cf9786, type: 3}
+      propertyPath: m_TagString
+      value: TractorModel
+      objectReference: {fileID: 0}
     - target: {fileID: 7152252472071169227, guid: de08d3c4b01f39d4282d15bb29cf9786, type: 3}
       propertyPath: Crop
       value: 
@@ -6510,7 +6534,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7152252472071169227, guid: de08d3c4b01f39d4282d15bb29cf9786, type: 3}
   m_PrefabInstance: {fileID: 1123724425}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1051496045}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2989dae2e4dbcbf46baa0cce145a388f, type: 3}
@@ -6557,7 +6581,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5225960142417319122, guid: d6d282c16626a264891875c57d4be997, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 5225960142417319122, guid: d6d282c16626a264891875c57d4be997, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6609,6 +6633,103 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6d282c16626a264891875c57d4be997, type: 3}
+--- !u!1001 &1171888873
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1550373700691535612, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550373700691535612, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550373700691535612, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550373700691535612, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550373700691535612, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -42.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550373700691535612, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550373700691535612, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 35.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550373700691535612, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550373700691535612, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550373700691535612, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550373700691535612, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550373700691535612, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550373700691535612, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550373700691535612, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712374735297938453, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354584662360278808, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: m_Name
+      value: FarmStandObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 3885236424689021164, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: tractor
+      value: 
+      objectReference: {fileID: 1051496045}
+    - target: {fileID: 3885236424689021164, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: cornPriceText
+      value: 
+      objectReference: {fileID: 648826478}
+    - target: {fileID: 3885236424689021164, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: totalBankText
+      value: 
+      objectReference: {fileID: 804087361}
+    - target: {fileID: 3885236424689021164, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: farmStandPanel
+      value: 
+      objectReference: {fileID: 761088896}
+    - target: {fileID: 3885236424689021164, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
+      propertyPath: cornHarvestedText
+      value: 
+      objectReference: {fileID: 539608449}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cd3f7a4862cc70c4987f96e3ba6d4b40, type: 3}
 --- !u!1 &1176656351
 GameObject:
   m_ObjectHideFlags: 0
@@ -10051,7 +10172,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 35257426264382196, guid: 8f4c7ddd342103e46bc38fe45636d060, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 35257426264382196, guid: 8f4c7ddd342103e46bc38fe45636d060, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10761,9 +10882,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1804192722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 097c5c3ebddcf73449bacffa5b0e3982, type: 3}
+  m_Script: {fileID: 11500000, guid: f45b427e6c14fef419054c296daad355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tornadoPrefab: {fileID: 4096359231499149526, guid: 4c1f8efe66ea2a24287bbc9659da3251, type: 3}
+  tornadoDuration: 30
+  tornadoTimerText: {fileID: 1925991466}
 --- !u!4 &1804192724
 Transform:
   m_ObjectHideFlags: 0
@@ -10802,7 +10926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8144311375270592867, guid: fd438e6292426734f9f0a6420d8f6e58, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8144311375270592867, guid: fd438e6292426734f9f0a6420d8f6e58, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11542,7 +11666,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1885600134
 GameObject:
@@ -12498,7 +12622,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 826305484}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SellCrops
+        m_MethodName: sellCrops
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 383122558}
+        m_TargetAssemblyTypeName: FarmStandScript, Assembly-CSharp
+        m_MethodName: backToPhaseOne
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12693,7 +12829,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2078555907
 GameObject:
@@ -13058,7 +13194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3836841824106833730, guid: 54357a7c5e7b0174bbb9f1a76227a3d8, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3836841824106833730, guid: 54357a7c5e7b0174bbb9f1a76227a3d8, type: 3}
       propertyPath: m_LocalScale.x
@@ -13282,7 +13418,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 359394234631739936, guid: 4b073c6b94048b34284a090928086ec5, type: 3}
       propertyPath: m_RootOrder
-      value: 27
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 359394234631739936, guid: 4b073c6b94048b34284a090928086ec5, type: 3}
       propertyPath: m_LocalPosition.x
