@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
     public int GetCropPrice()
     {
         // Example logic for crop price; can be modified as needed
-        return Random.Range(20, 50); // Random price between 10 and 50
+        return Random.Range(10, 25); // Random price between 10 and 50
     }
 
 

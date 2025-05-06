@@ -8,22 +8,36 @@ public class TornadoMovement : MonoBehaviour
     private Vector3 initialPosition;
     private Vector3 targetPosition;
 
+    public GameObject tractor; // Reference to the tractor prefab
+    private bool chasingPlayer;
+
     void Start()
     {
         // Save the starting position (optional: this could be used as the center for random movement)
         initialPosition = transform.position;
         SetNewRandomTarget();
+
+        if (tractor == null)
+        {
+            tractor = GameObject.FindGameObjectWithTag("Tractor"); // Find the tractor in the scene
+        }
     }
 
     void Update()
     {
-        // Move toward the target position
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, movementSpeed * Time.deltaTime);
-
+        if(chasingPlayer){
+            // Move toward the target position
+            transform.position = Vector3.MoveTowards(transform.position, tractor.transform.position, movementSpeed * Time.deltaTime/3);
+        }
+        else{
+            // Move toward the target position
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, movementSpeed * Time.deltaTime);
+        }
         // When close enough to the target, choose a new target
         if (Vector3.Distance(transform.position, targetPosition) < 0.5f)
         {
             SetNewRandomTarget();
+            chasingPlayer = true;
         }
     }
 
@@ -46,6 +60,16 @@ public class TornadoMovement : MonoBehaviour
                 Debug.Log("Collided with tractor, downgrading...");
                 tractor.Downgrade();
             }
+
+            chasingPlayer = false; // Stop chasing the tractor when it enters the tornado
+        }
+
+        // If Tornado collides with planter box, destroy half the crops
+
+        if (other.CompareTag("PlanterBox"))
+        {
+            Debug.Log("Collided with planter box, destroying half the crops...");
+            other.GetComponent<PlantingBoxScript>().DestroyHalfOfCrops();
         }
     }
 }

@@ -63,7 +63,7 @@ public class LandIndicator : MonoBehaviour
         if (tractorTransform != null &&
             Vector3.Distance(tractorTransform.position, landTarget.position) <= closeDistance)
         {
-            Debug.Log("[LandIndicator] hiding because store is open");
+            //Debug.Log("[LandIndicator] hiding because store is open");
             Hide();
      
             return;
