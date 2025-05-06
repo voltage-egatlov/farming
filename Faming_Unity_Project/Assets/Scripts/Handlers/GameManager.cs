@@ -189,7 +189,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Nina_Scene3"); // Modified: Redirect to Level 1 scene
+        SceneManager.LoadScene("Official_Level1_copy"); // Modified: Redirect to Level 1 scene
     }
     
     // Return to MainMenu

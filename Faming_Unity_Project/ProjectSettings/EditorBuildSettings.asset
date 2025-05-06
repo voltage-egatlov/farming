@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Level1_Old.unity
     guid: 0965d4b99eade2244aae52769ded7a73
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Nina_Scenes/Nina_Scene3.unity
     guid: 86510b68219d0d34983e8e8f1c9d34eb
   - enabled: 0
@@ -23,16 +23,19 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Aiden_Scene_1.unity
     guid: 63208cb8520f3c346abd2d94c7ca3b30
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Official_Level1_NINAs.unity
     guid: 70b45773c4cc34348aa60d0de3990725
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 1c5e2f932895ee64398634c9311bf374
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/yoyo.unity
     guid: 8f0c06eaf56cd41209df37ec88437bc2
   - enabled: 1
     path: Assets/Scenes 1/WinScene.unity
     guid: f54316a59523b0144aeb42daeef65b56
+  - enabled: 1
+    path: Assets/Scenes/Official_Level1_copy.unity
+    guid: 897d78769b3588847b650709293f556d
   m_configObjects: {}
