@@ -1530,6 +1530,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159363940}
   m_CullTransparentMesh: 1
+--- !u!224 &166138203 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1532747409826454564, guid: 695a9652c5e42664e955edb74243e024, type: 3}
+  m_PrefabInstance: {fileID: 157601275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &167874980 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4224344209392830465, guid: 695a9652c5e42664e955edb74243e024, type: 3}
@@ -9422,6 +9427,11 @@ RectTransform:
   m_AnchoredPosition: {x: -21.2, y: 150.9}
   m_SizeDelta: {x: 300, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &1562924080 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5989248206613879657, guid: 695a9652c5e42664e955edb74243e024, type: 3}
+  m_PrefabInstance: {fileID: 157601275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1564223014
 GameObject:
   m_ObjectHideFlags: 0
@@ -9637,6 +9647,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1566935061}
   m_CullTransparentMesh: 1
+--- !u!224 &1579285520 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7761522841528365029, guid: 695a9652c5e42664e955edb74243e024, type: 3}
+  m_PrefabInstance: {fileID: 157601275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1580281732
 GameObject:
   m_ObjectHideFlags: 0
@@ -9691,9 +9706,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tractorTransform: {fileID: 1123724431}
   landTarget: {fileID: 1230769530}
-  num1Box: {fileID: 0}
-  num2Box: {fileID: 0}
-  num3Box: {fileID: 0}
+  num1Box: {fileID: 1579285520}
+  num2Box: {fileID: 1562924080}
+  num3Box: {fileID: 166138203}
   arrowImage: {fileID: 1566935063}
   label: {fileID: 2121499463}
   plantPrompt: {fileID: 159363942}
